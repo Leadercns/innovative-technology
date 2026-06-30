@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>404 - 页面未找到</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #111;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+        .error-container {
+            max-width: 540px;
+            text-align: center;
+            border: 1px solid #eaecef;
+            padding: 48px 32px;
+            border-radius: 4px;
+            background: #fff;
+        }
+        .error-code {
+            font-size: 110px;
+            font-weight: 700;
+            color: #eaecef;
+            line-height: 1;
+            margin-bottom: 16px;
+            font-family: "SF Mono", "Menlo", monospace;
+            letter-spacing: -4px;
+            position: relative;
+        }
+        .error-code::after {
+            content: '404';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            color: #2c7da0;
+            clip-path: inset(0 0 45% 0);
+        }
+        .error-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+        .error-desc {
+            color: #5b6b82;
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 28px;
+            background: #fff;
+            color: #2c7da0;
+            text-decoration: none;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .back-btn:hover {
+            background: #f5f9ff;
+            border-color: #2c7da0;
+        }
+
+        .footer {
+            border-top: 1px solid #eaecef;
+            padding: 20px 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #6f7d95;
+            background: #fff;
+        }
+
+        @media (max-width: 640px) {
+            .error-container {
+                padding: 32px 20px;
+            }
+            .error-code {
+                font-size: 80px;
+            }
+            .error-title {
+                font-size: 20px;
+            }
+            .error-desc {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="main-content">
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">页面未找到</h1>
+        <p class="error-desc">抱歉，您请求的页面不存在或已被移除。</p>
+        <a href="https://levaer.cn/" class="back-btn">返回首页</a>
+    </div>
+</main>
+
+<footer class="footer">
+    Copyright © Leader 2025 - 2026<br>
+    <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#6f7d95;text-decoration:none;">渝ICP备2026009571号</a><br>
+    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50023102500793" target="_blank" style="color:#6f7d95;text-decoration:none;">
+        <img src="/assets/ga.png"style="vertical-align:middle;height:14px;margin-right:4px;">渝公网安备50023102500793号
+    </a>
+</footer>
+
+<script>
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && ['c', 'v', 'x', 'a'].includes(e.key.toLowerCase())) {
+            e.preventDefault();
+        }
+    });
+    document.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 1) e.preventDefault();
+    }, { passive: false });
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (e) => {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) e.preventDefault();
+        lastTouchEnd = now;
+    }, false);
+</script>
+</body>
+</html>
