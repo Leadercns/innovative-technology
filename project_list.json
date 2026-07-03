@@ -1,4 +1,20 @@
 [
   {
+    "name": "Tiecode 开发工具",
+    "link": "http://tiecode.cn/",
+    "description": "移动端安卓原生开发工具，高效便捷。",
+    "image": "https://via.placeholder.com/400x160/2c7da0/fff?text=Tiecode"
+  },
+  {
+    "name": "个人博客系统",
+    "link": "https://github.com/Leadercns/blog",
+    "description": "基于 Spring Boot + Vue 的轻量级博客。",
+    "image": "https://via.placeholder.com/400x160/1f5f7a/fff?text=Blog"
+  },
+  {
+    "name": "算法刷题笔记",
+    "link": "https://gitee.com/Leadercn/algorithm-notes",
+    "description": "LeetCode 与 算法竞赛 题解整理。",
+    "image": ""
   }
 ]
