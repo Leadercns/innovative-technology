@@ -119,7 +119,6 @@
             font-weight: 600;
         }
 
-        
         .btn-subsite {
             display: inline-flex;
             align-items: center;
@@ -212,7 +211,8 @@
         }
 
         .loading-placeholder,
-        .error-placeholder {
+        .error-placeholder,
+        .empty-placeholder {
             grid-column: 1 / -1;
             text-align: center;
             padding: 40px 20px;
@@ -226,6 +226,11 @@
             color: #c97e5c;
             border-color: #f5d0c2;
             background: #fff8f5;
+        }
+        .empty-placeholder {
+            color: #7e8c9e;
+            border-color: #dce3ec;
+            background: #fafbfc;
         }
 
         .contact-grid {
@@ -605,8 +610,6 @@
                 <strong>Levaer</strong>域名的由来：是 <strong>Leader</strong> 与 <strong>Vanguard</strong> 两个单词抽取合并组成。<br>
                 <span style="font-size:12px; color:#5f6f86;">Leader + Vanguard → Levaer · 引领先锋之意</span>
             </div>
-
-            
         </div>
 
         <div class="section fade-up-item" data-delay="30">
@@ -638,7 +641,6 @@
         <div class="section fade-up-item" data-delay="100">
             <div class="section-title">项目</div>
             <div class="card-grid" id="projectGrid">
-                <div class="loading-placeholder">加载项目中...</div>
             </div>
         </div>
 
@@ -676,7 +678,6 @@
                             </span>
                             <span class="contact-title">GitHub</span>
                         </div>
-                        
                     </div>
                 </div>
 
@@ -690,7 +691,6 @@
                             </span>
                             <span class="contact-title">Gitee</span>
                         </div>
-                        
                     </div>
                 </div>
 
@@ -705,7 +705,6 @@
                             </span>
                             <span class="contact-title">Email</span>
                         </div>
-                        
                     </div>
                 </div>
 
@@ -726,7 +725,7 @@
             </a>
         </div>
         <div class="ip-box" id="ipDisplay">获取IP中...</div>
-        <div class="esa-provider">阿里云ESA提供服务Ciallo～(∠・ω< )⌒★</div>
+        <div class="esa-provider">阿里云提供云服务</div>
     </footer>
 
     <div class="modal-overlay" id="contactModal">
@@ -891,20 +890,55 @@
         function loadProjects() {
             var gridContainer = document.getElementById('projectGrid');
             if (!gridContainer) return;
-            gridContainer.innerHTML = '<div class="loading-placeholder">加载项目中...</div>';
+
+            gridContainer.innerHTML = '';
+            var loadingEl = document.createElement('div');
+            loadingEl.className = 'loading-placeholder';
+            loadingEl.textContent = '加载项目中...';
+            loadingEl.id = 'projectLoadingPlaceholder';
+            gridContainer.appendChild(loadingEl);
+
             fetch('/project_list.json', { cache: 'no-cache', headers: { 'Accept': 'application/json' } })
                 .then(function(response) {
-                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    if (!response.ok) return null;
                     return response.json();
                 })
-                .then(function(projects) {
-                    if (!Array.isArray(projects) || projects.length === 0) {
-                        gridContainer.innerHTML = '<div class="error-placeholder">暂无项目数据，请添加项目至 project_list.json</div>';
+                .then(function(data) {
+                    var placeholder = document.getElementById('projectLoadingPlaceholder');
+                    if (placeholder) placeholder.remove();
+
+                    function hasValidProjects(projects) {
+                        if (!Array.isArray(projects) || projects.length === 0) return false;
+                        for (var i = 0; i < projects.length; i++) {
+                            var p = projects[i];
+                            if (p && (p.name || p.title)) {
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+
+                    if (data === null) {
+                        var errorEl = document.createElement('div');
+                        errorEl.className = 'error-placeholder';
+                        errorEl.textContent = '项目列表不存在';
+                        gridContainer.appendChild(errorEl);
                         return;
                     }
+
+                    if (!hasValidProjects(data)) {
+                        var emptyEl = document.createElement('div');
+                        emptyEl.className = 'empty-placeholder';
+                        emptyEl.textContent = '暂无项目';
+                        gridContainer.appendChild(emptyEl);
+                        return;
+                    }
+
                     gridContainer.innerHTML = '';
-                    for (var idx = 0; idx < projects.length; idx++) {
-                        var project = projects[idx];
+                    for (var idx = 0; idx < data.length; idx++) {
+                        var project = data[idx];
+                        if (!project.name && !project.title) continue;
+
                         var projectName = project.name || project.title || '未命名项目';
                         var projectLink = project.link || project.url || '#';
                         var projectDesc = project.description || project.intro || '暂无简介';
@@ -912,6 +946,7 @@
                         if (project.hasOwnProperty('image') && typeof project.image === 'string' && project.image.trim()) {
                             imageUrl = project.image.trim();
                         }
+
                         var cardElement;
                         if (projectLink && projectLink !== '#') {
                             cardElement = document.createElement('a');
@@ -923,6 +958,7 @@
                             cardElement.style.cursor = 'default';
                         }
                         cardElement.className = 'card';
+
                         if (imageUrl) {
                             var img = document.createElement('img');
                             img.src = imageUrl;
@@ -931,6 +967,7 @@
                             img.onerror = function() { this.style.display = 'none'; };
                             cardElement.appendChild(img);
                         }
+
                         var titleDiv = document.createElement('div');
                         titleDiv.className = 'card-title';
                         var nameSpan = document.createElement('span');
@@ -940,17 +977,24 @@
                         arrowSpan.textContent = '→';
                         titleDiv.appendChild(nameSpan);
                         titleDiv.appendChild(arrowSpan);
+
                         var descDiv = document.createElement('div');
                         descDiv.className = 'card-desc';
                         descDiv.textContent = projectDesc;
+
                         cardElement.appendChild(titleDiv);
                         cardElement.appendChild(descDiv);
                         gridContainer.appendChild(cardElement);
                     }
                 })
                 .catch(function(error) {
-                    console.error('加载项目列表失败:', error);
-                    gridContainer.innerHTML = '<div class="error-placeholder">项目列表加载失败<br>请确保 /project_list.json 存在且格式正确。</div>';
+                    var placeholder = document.getElementById('projectLoadingPlaceholder');
+                    if (placeholder) placeholder.remove();
+                    var errorEl = document.createElement('div');
+                    errorEl.className = 'error-placeholder';
+                    errorEl.textContent = '项目列表不存在';
+                    gridContainer.appendChild(errorEl);
+                    console.warn('项目列表加载失败:', error);
                 });
         }
 
