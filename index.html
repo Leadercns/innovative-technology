@@ -11,7 +11,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             background: #fff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -20,37 +19,20 @@
             touch-action: pan-y;
             -webkit-text-size-adjust: 100%;
         }
-
         body.glitch-effect {
             animation: gentleGlitch 0.15s ease-out both;
         }
         @keyframes gentleGlitch {
-            0% {
-                text-shadow: -1px 0 rgba(255, 80, 80, 0.3), 1px 0 rgba(80, 80, 255, 0.3);
-                transform: translate(0, 0) skew(0deg);
-            }
-            25% {
-                text-shadow: 1px 0 rgba(255, 80, 80, 0.3), -1px 0 rgba(80, 80, 255, 0.3);
-                transform: translate(0.5px, -0.5px) skew(0.3deg);
-            }
-            50% {
-                text-shadow: -1px 0 rgba(80, 80, 255, 0.3), 1px 0 rgba(255, 80, 80, 0.3);
-                transform: translate(-0.5px, 0.5px) skew(-0.2deg);
-            }
-            75% {
-                text-shadow: 1px 0 rgba(80, 80, 255, 0.3), -1px 0 rgba(255, 80, 80, 0.3);
-                transform: translate(0, 0.5px) skew(0.2deg);
-            }
-            100% {
-                text-shadow: none;
-                transform: translate(0, 0) skew(0deg);
-            }
+            0% { text-shadow: -1px 0 rgba(255,80,80,0.3), 1px 0 rgba(80,80,255,0.3); transform: translate(0,0) skew(0deg); }
+            25% { text-shadow: 1px 0 rgba(255,80,80,0.3), -1px 0 rgba(80,80,255,0.3); transform: translate(0.5px,-0.5px) skew(0.3deg); }
+            50% { text-shadow: -1px 0 rgba(80,80,255,0.3), 1px 0 rgba(255,80,80,0.3); transform: translate(-0.5px,0.5px) skew(-0.2deg); }
+            75% { text-shadow: 1px 0 rgba(80,80,255,0.3), -1px 0 rgba(255,80,80,0.3); transform: translate(0,0.5px) skew(0.2deg); }
+            100% { text-shadow: none; transform: translate(0,0) skew(0deg); }
         }
         body.glitch-effect img {
             filter: hue-rotate(1deg) contrast(1.02);
             transition: filter 0.05s;
         }
-
         .header {
             border-bottom: 1px solid #eaecef;
             padding: 18px 24px;
@@ -60,13 +42,11 @@
             font-weight: 600;
             color: #1a1a1a;
         }
-
         .container {
             max-width: 960px;
             margin: 0 auto;
             padding: 40px 24px 60px;
         }
-
         .profile {
             border: 1px solid #eaecef;
             padding: 32px 28px;
@@ -118,7 +98,6 @@
             color: #2c7da0;
             font-weight: 600;
         }
-
         .btn-subsite {
             display: inline-flex;
             align-items: center;
@@ -149,7 +128,6 @@
         .btn-subsite:hover .arrow {
             transform: translateX(4px);
         }
-
         .section {
             margin-bottom: 48px;
         }
@@ -161,13 +139,11 @@
             border-bottom: 2px solid #eaecef;
             color: #1a1a1a;
         }
-
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
-
         .card {
             display: block;
             border: 1px solid #eaecef;
@@ -209,7 +185,6 @@
             background: #f8f9fc;
             border: 1px solid #eef2f6;
         }
-
         .loading-placeholder,
         .error-placeholder,
         .empty-placeholder {
@@ -232,13 +207,11 @@
             border-color: #dce3ec;
             background: #fafbfc;
         }
-
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 16px;
         }
-
         .contact-card {
             border: 1px solid #eaecef;
             border-radius: 4px;
@@ -254,7 +227,6 @@
         .contact-card:active {
             transform: scale(0.98);
         }
-
         .contact-header {
             display: flex;
             align-items: center;
@@ -267,13 +239,11 @@
         .contact-header:hover {
             background: #f6f8fa;
         }
-
         .contact-header-left {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-
         .contact-badge {
             display: inline-flex;
             align-items: center;
@@ -291,22 +261,11 @@
             fill: #fff;
             display: block;
         }
-
         .contact-title {
             font-size: 15px;
             font-weight: 500;
             color: #1a1a1a;
         }
-
-        .contact-arrow {
-            font-size: 14px;
-            color: #8a9bb0;
-            flex-shrink: 0;
-            width: 20px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
         .footer {
             border-top: 1px solid #eaecef;
             padding: 28px 24px 32px;
@@ -317,6 +276,28 @@
         }
         .copyright {
             margin-bottom: 8px;
+        }
+        .special-thanks-trigger {
+            display: inline-block;
+            color: #2c7da0;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 13px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+            border: 1px solid transparent;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .special-thanks-trigger:hover {
+            background: #f0f6fa;
+            color: #1a5f7a;
+            border-color: #d0e2ed;
+        }
+        .special-thanks-trigger:active {
+            transform: scale(0.96);
         }
         .icp a {
             color: #6f7d95;
@@ -341,7 +322,6 @@
             color: #999;
             background: #f5f5f5;
         }
-
         .esa-provider {
             margin-top: 6px;
             font-family: monospace;
@@ -349,7 +329,9 @@
             color: #8a9bb0;
             letter-spacing: 0.3px;
         }
-
+        .footer-thanks-row {
+            margin-top: 8px;
+        }
         .police-record {
             margin-top: 12px;
             text-align: center;
@@ -382,55 +364,22 @@
         .police-record a:hover img {
             opacity: 1;
         }
-
         @media (max-width: 640px) {
-            .container {
-                padding: 28px 16px 48px;
-            }
-            .profile {
-                padding: 20px 16px;
-            }
-            .avatar {
-                width: 80px;
-                height: 80px;
-            }
-            .name {
-                font-size: 22px;
-            }
-            .card-grid {
-                gap: 14px;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            .project-img {
-                max-height: 100px;
-            }
-            .section-title {
-                font-size: 17px;
-            }
-            .police-record img {
-                height: 16px;
-            }
-            .btn-subsite {
-                padding: 8px 24px;
-                font-size: 14px;
-                width: 100%;
-                justify-content: center;
-            }
-            .contact-header {
-                padding: 14px 14px;
-            }
-            .contact-badge {
-                width: 28px;
-                height: 28px;
-            }
-            .contact-badge svg {
-                width: 18px;
-                height: 18px;
-            }
+            .container { padding: 28px 16px 48px; }
+            .profile { padding: 20px 16px; }
+            .avatar { width: 80px; height: 80px; }
+            .name { font-size: 22px; }
+            .card-grid { gap: 14px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .project-img { max-height: 100px; }
+            .section-title { font-size: 17px; }
+            .police-record img { height: 16px; }
+            .btn-subsite { padding: 8px 24px; font-size: 14px; width: 100%; justify-content: center; }
+            .contact-header { padding: 14px 14px; }
+            .contact-badge { width: 28px; height: 28px; }
+            .contact-badge svg { width: 18px; height: 18px; }
+            .special-thanks-trigger { font-size: 12px; padding: 2px 6px; }
         }
-
         .fade-up-item {
             opacity: 0;
             transform: translateY(30px);
@@ -440,7 +389,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -461,7 +409,6 @@
             opacity: 1;
             visibility: visible;
         }
-
         .modal-box {
             background: #fff;
             border-radius: 4px;
@@ -472,13 +419,12 @@
             transform: scale(0.92) translateY(12px);
             transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1), opacity 0.3s ease;
             opacity: 0;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
         }
         .modal-overlay.active .modal-box {
             transform: scale(1) translateY(0);
             opacity: 1;
         }
-
         .modal-header {
             display: flex;
             align-items: center;
@@ -511,7 +457,6 @@
             color: #1a1a1a;
             transform: rotate(90deg);
         }
-
         .modal-body {
             font-size: 14px;
             color: #2c3e50;
@@ -543,7 +488,6 @@
         .modal-body a:hover {
             text-decoration: underline;
         }
-
         .modal-footer {
             margin-top: 22px;
             text-align: right;
@@ -567,38 +511,70 @@
         .modal-btn-close:active {
             transform: scale(0.97);
         }
-
+        .thanks-item {
+            border: 1px solid #eaecef;
+            border-radius: 4px;
+            padding: 16px 18px;
+            background: #fafbfc;
+            transition: border-color 0.2s;
+            margin-bottom: 14px;
+        }
+        .thanks-item:last-child {
+            margin-bottom: 0;
+        }
+        .thanks-item:hover {
+            border-color: #cbd5e0;
+        }
+        .thanks-item .thanks-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .thanks-item .thanks-name .thanks-arrow {
+            color: #8a9bb0;
+            font-size: 13px;
+        }
+        .thanks-item .thanks-desc {
+            font-size: 13px;
+            color: #5b6b82;
+            margin-bottom: 6px;
+        }
+        .thanks-item .thanks-link {
+            font-size: 13px;
+            word-break: break-all;
+        }
+        .thanks-item .thanks-link a {
+            color: #2c7da0;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbd5e0;
+            transition: border-color 0.2s;
+        }
+        .thanks-item .thanks-link a:hover {
+            border-color: #2c7da0;
+            text-decoration: none;
+        }
         @media (max-width: 640px) {
-            .modal-box {
-                padding: 24px 18px;
-                max-width: 100%;
-                margin: 12px;
-            }
-            .modal-header-title {
-                font-size: 17px;
-            }
-            .modal-body {
-                font-size: 13px;
-            }
-            .modal-btn-close {
-                padding: 6px 22px;
-                font-size: 13px;
-                width: 100%;
-            }
-            .modal-footer {
-                text-align: center;
-            }
+            .modal-box { padding: 24px 18px; max-width: 100%; margin: 12px; }
+            .modal-header-title { font-size: 17px; }
+            .modal-body { font-size: 13px; }
+            .modal-btn-close { padding: 6px 22px; font-size: 13px; width: 100%; }
+            .modal-footer { text-align: center; }
+            .thanks-item { padding: 12px 14px; }
+            .thanks-item .thanks-name { font-size: 14px; }
+            .thanks-item .thanks-desc { font-size: 12px; }
+            .thanks-item .thanks-link { font-size: 12px; }
         }
     </style>
 </head>
 <body>
-
     <header class="header">
         <div class="site-title">Leader</div>
     </header>
-
     <main class="container">
-
         <div class="profile fade-up-item">
             <img src="assets/gr.jpg" alt="Leader" class="avatar" onerror="this.src='https://placehold.co/100x100/eee/555?text=L'">
             <h1 class="name">Leader</h1>
@@ -611,108 +587,56 @@
                 <span style="font-size:12px; color:#5f6f86;">Leader + Vanguard → Levaer · 引领先锋之意</span>
             </div>
         </div>
-
         <div class="section fade-up-item" data-delay="30">
             <div class="section-title">我的技术栈</div>
             <div class="card-grid">
-                <div class="card">
-                    <div class="card-title">Tiecode</div>
-                    <div class="card-desc">移动端安卓开发工具，原生开发。</div>
-                </div>
-                <div class="card">
-                    <div class="card-title">HTML / CSS</div>
-                    <div class="card-desc">前端</div>
-                </div>
-                <div class="card">
-                    <div class="card-title">C</div>
-                    <div class="card-desc">算法基础</div>
-                </div>
-                <div class="card">
-                    <div class="card-title">Java</div>
-                    <div class="card-desc">面向对象设计、后端开发与跨平台应用</div>
-                </div>
-                <div class="card">
-                    <div class="card-title">MySQL</div>
-                    <div class="card-desc">关系型数据库设计、查询优化与数据管理</div>
-                </div>
+                <div class="card"><div class="card-title">Tiecode</div><div class="card-desc">移动端安卓开发工具，原生开发。</div></div>
+                <div class="card"><div class="card-title">HTML / CSS</div><div class="card-desc">前端</div></div>
+                <div class="card"><div class="card-title">C</div><div class="card-desc">算法基础</div></div>
+                <div class="card"><div class="card-title">Java</div><div class="card-desc">面向对象设计、后端开发与跨平台应用</div></div>
+                <div class="card"><div class="card-title">MySQL</div><div class="card-desc">关系型数据库设计、查询优化与数据管理</div></div>
             </div>
         </div>
-
         <div class="section fade-up-item" data-delay="100">
             <div class="section-title">项目</div>
-            <div class="card-grid" id="projectGrid">
-            </div>
+            <div class="card-grid" id="projectGrid"></div>
         </div>
-
-        <div class="section fade-up-item" data-delay="200">
-            <div class="section-title">特别感谢</div>
-            <div class="card-grid">
-                <a href="http://tiecode.cn/" target="_blank" rel="noopener noreferrer" class="card">
-                    <div class="card-title">
-                        结绳
-                        <span class="card-arrow">→</span>
-                    </div>
-                    <div class="card-desc">感谢提供安卓开发</div>
-                </a>
-                <a href="http://xbjstd.cn/" target="_blank" rel="noopener noreferrer" class="card">
-                    <div class="card-title">
-                        小暴技术团队
-                        <span class="card-arrow">→</span>
-                    </div>
-                    <div class="card-desc">感谢提供云服务与技术指导</div>
-                </a>
-            </div>
-        </div>
-
         <div class="section fade-up-item" data-delay="300">
             <div class="section-title">联系方式</div>
             <div class="contact-grid">
-
                 <div class="contact-card" data-contact="github">
                     <div class="contact-header">
                         <div class="contact-header-left">
                             <span class="contact-badge" style="background:#181717;">
-                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                                </svg>
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                             </span>
                             <span class="contact-title">GitHub</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="contact-card" data-contact="gitee">
                     <div class="contact-header">
                         <div class="contact-header-left">
                             <span class="contact-badge" style="background:#C71D23;">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.48 7.98l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-4.52 4.52l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-4.52 4.52l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-2.04-2.04l-1.48 1.48-2.04-2.04 1.48-1.48 2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04 2.04l1.48 1.48-2.04 2.04-1.48-1.48 2.04-2.04zm-2.04 2.04l1.48 1.48-2.04 2.04-1.48-1.48 2.04-2.04z"/>
-                                </svg>
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.48 7.98l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-4.52 4.52l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-4.52 4.52l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-2.04-2.04l-1.48 1.48-2.04-2.04 1.48-1.48 2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04 2.04l1.48 1.48-2.04 2.04-1.48-1.48 2.04-2.04zm-2.04 2.04l1.48 1.48-2.04 2.04-1.48-1.48 2.04-2.04z"/></svg>
                             </span>
                             <span class="contact-title">Gitee</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="contact-card" data-contact="email">
                     <div class="contact-header">
                         <div class="contact-header-left">
                             <span class="contact-badge" style="background:#1A73E8;">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/>
-                                    <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
-                                </svg>
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
                             </span>
                             <span class="contact-title">Email</span>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </main>
-
     <footer class="footer">
         <div class="copyright">Copyright © Leader 2025 - 2026</div>
         <div class="icp">
@@ -726,6 +650,9 @@
         </div>
         <div class="ip-box" id="ipDisplay">获取IP中...</div>
         <div class="esa-provider">阿里云提供云服务</div>
+        <div class="footer-thanks-row">
+            <span class="special-thanks-trigger" id="thanksTrigger">特别感谢</span>
+        </div>
     </footer>
 
     <div class="modal-overlay" id="contactModal">
@@ -733,26 +660,47 @@
             <div class="modal-header">
                 <div class="modal-header-left">
                     <span class="contact-badge" id="modalBadge" style="background:#181717;">
-                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" id="modalIcon">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-                        </svg>
+                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" id="modalIcon"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
                     </span>
                     <span class="modal-header-title" id="modalTitle">GitHub</span>
                 </div>
                 <button class="modal-close" id="modalCloseBtn">✕</button>
             </div>
             <div class="modal-body" id="modalBody">
-                <div class="row">
-                    <span class="label">用户：</span>
-                    <span class="value"><strong>Leadercns</strong></span>
-                </div>
-                <div class="row">
-                    <span class="label">链接：</span>
-                    <a href="https://github.com/Leadercns" target="_blank" rel="noopener noreferrer">https://github.com/Leadercns</a>
-                </div>
+                <div class="row"><span class="label">用户：</span><span class="value"><strong>Leadercns</strong></span></div>
+                <div class="row"><span class="label">链接：</span><a href="https://github.com/Leadercns" target="_blank" rel="noopener noreferrer">https://github.com/Leadercns</a></div>
             </div>
             <div class="modal-footer">
                 <button class="modal-btn-close" id="modalCloseBtn2">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="thanksModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <span class="contact-badge" style="background:#2c7da0;">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill:#fff; width:20px; height:20px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </span>
+                    <span class="modal-header-title">特别感谢</span>
+                </div>
+                <button class="modal-close" id="thanksModalCloseBtn">✕</button>
+            </div>
+            <div class="modal-body" id="thanksModalBody">
+                <div class="thanks-item">
+                    <div class="thanks-name">结绳 <span class="thanks-arrow">→</span></div>
+                    <div class="thanks-desc">感谢提供安卓开发</div>
+                    <div class="thanks-link"><a href="http://tiecode.cn/" target="_blank" rel="noopener noreferrer">http://tiecode.cn/</a></div>
+                </div>
+                <div class="thanks-item">
+                    <div class="thanks-name">小暴技术团队 <span class="thanks-arrow">→</span></div>
+                    <div class="thanks-desc">感谢提供云服务与技术指导</div>
+                    <div class="thanks-link"><a href="http://xbjstd.cn/" target="_blank" rel="noopener noreferrer">http://xbjstd.cn/</a></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn-close" id="thanksModalCloseBtn2">关闭</button>
             </div>
         </div>
     </div>
@@ -795,14 +743,12 @@
         var modalCloseBtn = document.getElementById('modalCloseBtn');
         var modalCloseBtn2 = document.getElementById('modalCloseBtn2');
 
-        function openModal(type) {
+        function openContactModal(type) {
             var data = contactData[type];
             if (!data) return;
-
             modalBadge.style.background = data.badgeColor;
             modalIcon.innerHTML = data.icon;
             modalTitle.textContent = data.title;
-
             var html = '';
             for (var i = 0; i < data.fields.length; i++) {
                 var field = data.fields[i];
@@ -820,12 +766,11 @@
                 html += '</div>';
             }
             modalBody.innerHTML = html;
-
             modalOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
+        function closeContactModal() {
             modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
@@ -833,19 +778,42 @@
         document.querySelectorAll('.contact-card').forEach(function(card) {
             card.addEventListener('click', function(e) {
                 var type = this.getAttribute('data-contact');
-                if (type) openModal(type);
+                if (type) openContactModal(type);
             });
         });
 
-        modalCloseBtn.addEventListener('click', closeModal);
-        modalCloseBtn2.addEventListener('click', closeModal);
-
+        modalCloseBtn.addEventListener('click', closeContactModal);
+        modalCloseBtn2.addEventListener('click', closeContactModal);
         modalOverlay.addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
+            if (e.target === this) closeContactModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeContactModal();
         });
 
+        var thanksModal = document.getElementById('thanksModal');
+        var thanksTrigger = document.getElementById('thanksTrigger');
+        var thanksModalCloseBtn = document.getElementById('thanksModalCloseBtn');
+        var thanksModalCloseBtn2 = document.getElementById('thanksModalCloseBtn2');
+
+        function openThanksModal() {
+            thanksModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeThanksModal() {
+            thanksModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        thanksTrigger.addEventListener('click', openThanksModal);
+        thanksModalCloseBtn.addEventListener('click', closeThanksModal);
+        thanksModalCloseBtn2.addEventListener('click', closeThanksModal);
+        thanksModal.addEventListener('click', function(e) {
+            if (e.target === this) closeThanksModal();
+        });
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Escape') closeThanksModal();
         });
 
         function getUserIP() {
@@ -874,7 +842,6 @@
         }
 
         var glitchTriggered = false;
-
         function triggerGentleGlitchOnce() {
             if (glitchTriggered) return;
             glitchTriggered = true;
@@ -890,7 +857,6 @@
         function loadProjects() {
             var gridContainer = document.getElementById('projectGrid');
             if (!gridContainer) return;
-
             gridContainer.innerHTML = '';
             var loadingEl = document.createElement('div');
             loadingEl.className = 'loading-placeholder';
@@ -906,18 +872,14 @@
                 .then(function(data) {
                     var placeholder = document.getElementById('projectLoadingPlaceholder');
                     if (placeholder) placeholder.remove();
-
                     function hasValidProjects(projects) {
                         if (!Array.isArray(projects) || projects.length === 0) return false;
                         for (var i = 0; i < projects.length; i++) {
                             var p = projects[i];
-                            if (p && (p.name || p.title)) {
-                                return true;
-                            }
+                            if (p && (p.name || p.title)) return true;
                         }
                         return false;
                     }
-
                     if (data === null) {
                         var errorEl = document.createElement('div');
                         errorEl.className = 'error-placeholder';
@@ -925,7 +887,6 @@
                         gridContainer.appendChild(errorEl);
                         return;
                     }
-
                     if (!hasValidProjects(data)) {
                         var emptyEl = document.createElement('div');
                         emptyEl.className = 'empty-placeholder';
@@ -933,12 +894,10 @@
                         gridContainer.appendChild(emptyEl);
                         return;
                     }
-
                     gridContainer.innerHTML = '';
                     for (var idx = 0; idx < data.length; idx++) {
                         var project = data[idx];
                         if (!project.name && !project.title) continue;
-
                         var projectName = project.name || project.title || '未命名项目';
                         var projectLink = project.link || project.url || '#';
                         var projectDesc = project.description || project.intro || '暂无简介';
@@ -946,7 +905,6 @@
                         if (project.hasOwnProperty('image') && typeof project.image === 'string' && project.image.trim()) {
                             imageUrl = project.image.trim();
                         }
-
                         var cardElement;
                         if (projectLink && projectLink !== '#') {
                             cardElement = document.createElement('a');
@@ -958,7 +916,6 @@
                             cardElement.style.cursor = 'default';
                         }
                         cardElement.className = 'card';
-
                         if (imageUrl) {
                             var img = document.createElement('img');
                             img.src = imageUrl;
@@ -967,7 +924,6 @@
                             img.onerror = function() { this.style.display = 'none'; };
                             cardElement.appendChild(img);
                         }
-
                         var titleDiv = document.createElement('div');
                         titleDiv.className = 'card-title';
                         var nameSpan = document.createElement('span');
@@ -977,11 +933,9 @@
                         arrowSpan.textContent = '→';
                         titleDiv.appendChild(nameSpan);
                         titleDiv.appendChild(arrowSpan);
-
                         var descDiv = document.createElement('div');
                         descDiv.className = 'card-desc';
                         descDiv.textContent = projectDesc;
-
                         cardElement.appendChild(titleDiv);
                         cardElement.appendChild(descDiv);
                         gridContainer.appendChild(cardElement);
