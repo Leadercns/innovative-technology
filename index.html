@@ -1,228 +1,148 @@
 <!DOCTYPE html>
-<html lang="zh">
-
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8" />
-    <meta name="renderer" content="webkit" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="force-rendering" content="webkit" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="全栈开发者Leader个人导航中心，开发的产品有LeadCore等等;感谢你来访问我！" />
-    <meta name="keywords" content="个人中心,个人导航,Leader个人导航,开发者Leader" />
-    <meta name="author" content="Leader" />
-    <meta name="robots" content="index,follow" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Leader">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Leader - Web</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
-    <link rel="apple-touch-icon" href="assets/gr.jpg" />
-    <link rel="icon" href="assets/gr.jpg" />
-
+    <link rel="icon" href="/assets/bg.jpg" type="image/jpeg">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        html {
-            font-family: sans-serif;
-            -ms-text-size-adjust: 100%;
+        body {
+            background: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #111;
+            line-height: 1.5;
+            touch-action: pan-y;
             -webkit-text-size-adjust: 100%;
         }
-        body {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-            font-family: "ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            font-size: 1em;
-            color: #666;
-            -webkit-font-smoothing: antialiased;
-            line-height: 1.6;
+        body.glitch-effect {
+            animation: gentleGlitch 0.15s ease-out both;
         }
-        ::-webkit-scrollbar {
-            width: 10px;
+        @keyframes gentleGlitch {
+            0% { text-shadow: -1px 0 rgba(255,80,80,0.3), 1px 0 rgba(80,80,255,0.3); transform: translate(0,0) skew(0deg); }
+            25% { text-shadow: 1px 0 rgba(255,80,80,0.3), -1px 0 rgba(80,80,255,0.3); transform: translate(0.5px,-0.5px) skew(0.3deg); }
+            50% { text-shadow: -1px 0 rgba(80,80,255,0.3), 1px 0 rgba(255,80,80,0.3); transform: translate(-0.5px,0.5px) skew(-0.2deg); }
+            75% { text-shadow: 1px 0 rgba(80,80,255,0.3), -1px 0 rgba(255,80,80,0.3); transform: translate(0,0.5px) skew(0.2deg); }
+            100% { text-shadow: none; transform: translate(0,0) skew(0deg); }
         }
-        ::-webkit-scrollbar-track {
-            background: rgba(200, 200, 200, 0.5);
-            border-radius: 6px;
+        body.glitch-effect img {
+            filter: hue-rotate(1deg) contrast(1.02);
+            transition: filter 0.05s;
         }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(100, 100, 100, 0.7);
-            border-radius: 6px;
+        .header {
+            border-bottom: 1px solid #eaecef;
+            padding: 18px 24px;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.7);
+        .site-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
         }
-        .root::-webkit-scrollbar {
-            display: none;
-        }
-        .root {
-            -ms-overflow-style: none;
-            overflow-x: hidden;
-            overflow-y: auto;
-            height: 100%;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        ul {
-            list-style: none;
-        }
-        p {
-            margin-bottom: 1.2em;
-        }
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        .panel {
-            display: table;
-            width: 100%;
-            height: 100%;
-            background-color: white;
-        }
-        .panel-main__inner {
-            display: table-cell;
-            vertical-align: middle;
-            padding: 15px 0;
-        }
-        .panel-main__content {
-            max-width: 900px;
+        .container {
+            max-width: 960px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 40px 24px 60px;
         }
-        .panel-inverted {
-            font-weight: 100;
-            text-align: center;
-            color: black;
+        .profile {
+            border: 1px solid #eaecef;
+            padding: 32px 28px;
+            background: #fff;
+            border-radius: 4px;
+            margin-bottom: 48px;
         }
-        .panel-cover {
-            display: block;
-            width: 100%;
-            height: 100%;
-            background: #fafafa;
-        }
-
-        .ih-item.circle {
-            position: relative;
-            width: 120px;
-            height: 120px;
+        .avatar {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 0 auto 8px;
-        }
-        .ih-item.circle .img {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            z-index: 11;
-            transition: all 0.5s ease-in-out;
-        }
-        .ih-item.circle .img img {
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
             object-fit: cover;
-        }
-        .ih-item.circle .info {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-        }
-        .ih-item.circle .info .info-back {
-            opacity: 1;
-            border-radius: 50%;
-            width: 100%;
-            height: 100%;
-            background: #333333;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .ih-item.circle .info h2 {
-            color: #fff;
-            font-size: 18px;
-            margin: 0;
-        }
-        .ih-item.circle .info p {
-            color: #bbb;
-            font-style: italic;
-            font-size: 12px;
-            margin: 0;
-        }
-        .ih-item.circle.effect.right_to_left .img {
-            -webkit-transform-origin: 0% 50%;
-            transform-origin: 0% 50%;
-        }
-        .ih-item.circle.effect.right_to_left a:hover .img {
-            -webkit-transform: rotate3d(0, 1, 0, -180deg);
-            transform: rotate3d(0, 1, 0, -180deg);
-        }
-        .profilepic {
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5), 0px 2px 20px 3px rgba(0, 0, 0, 0.25);
-            border-radius: 50%;
-            width: 128px;
-            height: 128px;
-            margin: 0 auto;
-            overflow: hidden;
-            background: #88acdb;
-        }
-
-        .thankyou {
-            font-family: "Segoe UI Emoji", serif;
-            font-size: 42px;
-            color: black;
-            margin: 0.2em 0 0.1em;
-        }
-        .panel-subtitle {
-            font-size: 1.15em;
-            font-weight: lighter;
-            letter-spacing: 2px;
-            color: #555;
-        }
-        .panel-cover__description {
-            margin: 0 10px;
-            font-size: 1em;
-            color: #333;
-        }
-        .panel-cover__divider {
-            width: 40%;
-            margin: 12px auto;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .iUp {
-            opacity: 0;
-            -webkit-transform: translate3d(0, 60px, 0);
-            transform: translate3d(0, 60px, 0);
-            -webkit-transition: all 1.6s cubic-bezier(0.19, 1, 0.22, 1);
-            transition: all 1.6s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .iUp.up {
-            opacity: 1;
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-
-        .navigation {
+            border: 1px solid #ddd;
+            margin: 0 auto 18px auto;
             display: block;
-            width: 100%;
-            margin-top: 8px;
+            background: #f5f5f5;
+        }
+        .name {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .sub {
+            color: #4e5b6e;
+            font-size: 14px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .quote {
+            border-left: 3px solid #2c7da0;
+            background: #fafbfc;
+            padding: 14px 18px;
+            margin: 20px 0 20px;
+            font-size: 14px;
+            color: #2c3e50;
+            text-align: left;
+        }
+        .domain-note {
+            border-left: 3px solid #2c7da0;
+            background: #fafbfc;
+            padding: 12px 18px;
+            font-size: 13px;
+            color: #2c3e50;
+            margin-top: 10px;
+            text-align: left;
+        }
+        .domain-note strong {
+            color: #2c7da0;
+            font-weight: 600;
+        }
+        .btn-subsite {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #2c7da0;
+            color: #fff;
+            padding: 10px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: background 0.2s, transform 0.15s;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+        }
+        .btn-subsite:hover {
+            background: #1f5f7a;
+            transform: translateY(-1px);
+        }
+        .btn-subsite:active {
+            transform: scale(0.97);
+        }
+        .btn-subsite .arrow {
+            display: inline-block;
+            transition: transform 0.25s ease;
+        }
+        .btn-subsite:hover .arrow {
+            transform: translateX(4px);
+        }
+        .section {
+            margin-bottom: 48px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #eaecef;
+            color: #1a1a1a;
         }
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
-            margin-top: 15px;
         }
         .card {
             display: block;
@@ -287,71 +207,113 @@
             border-color: #dce3ec;
             background: #fafbfc;
         }
-
-        .navigation--social {
-            margin-top: 28px;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
         }
-        .navigation--social .navigation__item {
-            display: inline-block;
-            border: none;
-            background: none;
-            padding: 0 10px;
-            margin: 0 2px;
+        .contact-card {
+            border: 1px solid #eaecef;
+            border-radius: 4px;
+            background: #fff;
+            overflow: hidden;
+            transition: border-color 0.2s, transform 0.15s;
+            cursor: pointer;
         }
-        .navigation--social .navigation__item a {
-            font-size: 1.9em;
-            color: #333;
-            transition: 0.3s;
+        .contact-card:hover {
+            border-color: #cbd5e0;
+            transform: translateY(-1px);
         }
-        .navigation--social .navigation__item a:hover {
-            color: #4e97d8;
+        .contact-card:active {
+            transform: scale(0.98);
         }
-        .navigation--social .navigation__item .label {
-            display: none;
+        .contact-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 18px;
+            user-select: none;
+            transition: background 0.15s;
+            gap: 12px;
         }
-
-        .remark {
-            position: relative;
-            text-align: center;
-            padding: 6px 0 4px;
-            background-color: #f6f6f7;
-            border-top: 1px solid #dcdcdc;
-            width: 100%;
+        .contact-header:hover {
+            background: #f6f8fa;
         }
-        .power {
-            display: block;
-            color: black;
-            font-size: 15px;
-            line-height: 1.6;
-            letter-spacing: 0.3px;
+        .contact-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        .power-line {
-            display: block;
-            margin: 1px 0;
-        }
-        .power a {
-            color: black;
-            margin: 0 4px;
-        }
-        .power a:hover {
-            text-decoration: underline;
-        }
-        .ga-badge {
+        .contact-badge {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            flex-shrink: 0;
+            background: #181717;
+            color: #fff;
         }
-        .ga-icon {
-            height: 18px;
-            width: auto;
-            vertical-align: middle;
+        .contact-badge svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+            display: block;
+        }
+        .contact-title {
+            font-size: 15px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        .footer {
+            border-top: 1px solid #eaecef;
+            padding: 28px 24px 32px;
+            text-align: center;
+            background: #fff;
+            font-size: 12px;
+            color: #6f7d95;
+        }
+        .copyright {
+            margin-bottom: 8px;
+        }
+        .special-thanks-trigger {
+            display: inline-block;
+            color: #2c7da0;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 13px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+            border: 1px solid transparent;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .special-thanks-trigger:hover {
+            background: #f0f6fa;
+            color: #1a5f7a;
+            border-color: #d0e2ed;
+        }
+        .special-thanks-trigger:active {
+            transform: scale(0.96);
+        }
+        .icp a {
+            color: #6f7d95;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbd5e0;
+        }
+        .icp a:hover {
+            color: #2c7da0;
         }
         .ip-box {
+            margin-top: 12px;
             font-family: monospace;
-            font-size: 13px;
+            font-size: 12px;
             background: #f5f7fa;
             display: inline-block;
-            padding: 2px 12px;
+            padding: 4px 12px;
             border-radius: 3px;
             border: 1px solid #e2e8f0;
             color: #2c5a74;
@@ -361,319 +323,695 @@
             background: #f5f5f5;
         }
         .esa-provider {
+            margin-top: 6px;
             font-family: monospace;
-            font-size: 13px;
-            color: #6f7d95;
+            font-size: 11px;
+            color: #8a9bb0;
             letter-spacing: 0.3px;
         }
-
-        @keyframes shake {
-            0% { transform: rotate(0deg) scale(1) translateX(0); }
-            25% { transform: rotate(-6deg) scale(1.04) translateX(-2px); }
-            50% { transform: rotate(6deg) scale(1) translateX(2px); }
-            75% { transform: rotate(-6deg) scale(0.96) translateX(-2px); }
-            100% { transform: rotate(0deg) scale(1) translateX(0); }
+        .footer-thanks-row {
+            margin-top: 8px;
         }
-        .panel-cover__subtitle .shake {
+        .police-record {
+            margin-top: 12px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .police-record a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #6f7d95;
+            transition: color 0.2s ease;
+            font-size: 12px;
+            font-weight: normal;
+            border: none;
+        }
+        .police-record a:hover {
+            color: #2c7da0;
+            text-decoration: none;
+        }
+        .police-record img {
+            height: 18px;
+            width: auto;
             display: inline-block;
-            animation: shake 0.8s ease-in-out 1 forwards;
+            vertical-align: middle;
+            border: none;
+            opacity: 0.9;
+            transition: opacity 0.2s;
         }
-
-        @media (max-width: 780px) {
-            .ih-item.circle, .ih-item.circle .img { width: 100px; height: 100px; }
-            .profilepic { width: 100px; height: 100px; }
-            .thankyou { font-size: 2em; }
-            .panel-subtitle { font-size: 1em; }
-            .card-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-            .power { font-size: 13px; }
+        .police-record a:hover img {
+            opacity: 1;
         }
-        @media (max-width: 480px) {
-            .panel-main__content { padding: 0 12px; }
-            .card-grid { grid-template-columns: 1fr; }
-            .power { font-size: 12px; }
-            .ga-icon { height: 16px; }
-            .ip-box { font-size: 11px; padding: 1px 8px; }
-            .esa-provider { font-size: 11px; }
+        @media (max-width: 640px) {
+            .container { padding: 28px 16px 48px; }
+            .profile { padding: 20px 16px; }
+            .avatar { width: 80px; height: 80px; }
+            .name { font-size: 22px; }
+            .card-grid { gap: 14px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .project-img { max-height: 100px; }
+            .section-title { font-size: 17px; }
+            .police-record img { height: 16px; }
+            .btn-subsite { padding: 8px 24px; font-size: 14px; width: 100%; justify-content: center; }
+            .contact-header { padding: 14px 14px; }
+            .contact-badge { width: 28px; height: 28px; }
+            .contact-badge svg { width: 18px; height: 18px; }
+            .special-thanks-trigger { font-size: 12px; padding: 2px 6px; }
+        }
+        .fade-up-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .fade-up-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: 4px;
+            border: 1px solid #eaecef;
+            max-width: 480px;
+            width: 100%;
+            padding: 32px 28px;
+            transform: scale(0.92) translateY(12px);
+            transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1), opacity 0.3s ease;
+            opacity: 0;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        .modal-overlay.active .modal-box {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eaecef;
+        }
+        .modal-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .modal-header-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #8a9bb0;
+            cursor: pointer;
+            padding: 0 4px;
+            line-height: 1;
+            transition: color 0.2s, transform 0.15s;
+        }
+        .modal-close:hover {
+            color: #1a1a1a;
+            transform: rotate(90deg);
+        }
+        .modal-body {
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+        .modal-body .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 4px 8px;
+            padding: 3px 0;
+        }
+        .modal-body .row+.row {
+            margin-top: 4px;
+        }
+        .modal-body .label {
+            color: #6f7d95;
+            font-size: 13px;
+            margin-right: 4px;
+        }
+        .modal-body .value {
+            word-break: break-all;
+        }
+        .modal-body a {
+            color: #2c7da0;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        .modal-body a:hover {
+            text-decoration: underline;
+        }
+        .modal-footer {
+            margin-top: 22px;
+            text-align: right;
+        }
+        .modal-btn-close {
+            background: #2c7da0;
+            color: #fff;
+            border: none;
+            padding: 8px 28px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            letter-spacing: 0.3px;
+        }
+        .modal-btn-close:hover {
+            background: #1f5f7a;
+            transform: translateY(-1px);
+        }
+        .modal-btn-close:active {
+            transform: scale(0.97);
+        }
+        .thanks-item {
+            border: 1px solid #eaecef;
+            border-radius: 4px;
+            padding: 16px 18px;
+            background: #fafbfc;
+            transition: border-color 0.2s;
+            margin-bottom: 14px;
+        }
+        .thanks-item:last-child {
+            margin-bottom: 0;
+        }
+        .thanks-item:hover {
+            border-color: #cbd5e0;
+        }
+        .thanks-item .thanks-name {
+            font-weight: 600;
+            font-size: 15px;
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+        .thanks-item .thanks-name .thanks-arrow {
+            color: #8a9bb0;
+            font-size: 13px;
+        }
+        .thanks-item .thanks-desc {
+            font-size: 13px;
+            color: #5b6b82;
+            margin-bottom: 6px;
+        }
+        .thanks-item .thanks-link {
+            font-size: 13px;
+            word-break: break-all;
+        }
+        .thanks-item .thanks-link a {
+            color: #2c7da0;
+            text-decoration: none;
+            border-bottom: 1px dotted #cbd5e0;
+            transition: border-color 0.2s;
+        }
+        .thanks-item .thanks-link a:hover {
+            border-color: #2c7da0;
+            text-decoration: none;
+        }
+        @media (max-width: 640px) {
+            .modal-box { padding: 24px 18px; max-width: 100%; margin: 12px; }
+            .modal-header-title { font-size: 17px; }
+            .modal-body { font-size: 13px; }
+            .modal-btn-close { padding: 6px 22px; font-size: 13px; width: 100%; }
+            .modal-footer { text-align: center; }
+            .thanks-item { padding: 12px 14px; }
+            .thanks-item .thanks-name { font-size: 14px; }
+            .thanks-item .thanks-desc { font-size: 12px; }
+            .thanks-item .thanks-link { font-size: 12px; }
         }
     </style>
 </head>
-
-<body class="root" id="b-1s" oncontextmenu="self.event.returnValue" onselectstart="return false">
-    <header id="b-2s" class="panel-cover">
-        <div class="panel-main panel">
-            <div class="panel-main__inner panel-inverted">
-                <div class="panel-main__content">
-                    <div class="ih-item circle effect right_to_left" style="margin-top: 5%;">
-                        <a class="blog-button">
-                            <div class="img">
-                                <img src="assets/gr.jpg" alt="img" class="js-avatar iUp profilepic" />
-                            </div>
-                            <div class="info iUp">
-                                <div class="info-back">
-                                    <h2>Hello</h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <h1 class="thankyou">Leader</h1>
-                    <p class="panel-cover__subtitle panel-subtitle iUp">
-                        <span class="shake"></span><br> 尽吾志也而不能至者，可以无悔矣，其孰能讥之乎？
-                    </p>
-                    <hr class="panel-cover__divider iUp" />
-
-                    <p class="panel-cover__description iUp">全栈开发者</p>
-
-                    <div class="navigation-wrapper iUp">
-                        <div>
-                            <nav class="cover-navigation cover-navigation--primary">
-                                <ul class="navigation">
-                                    <p class="panel-cover__description iUp" style="font-weight:600; font-size:1.1em;">个人项目</p>
-                                    <div class="card-grid" id="projectGrid"></div>
-                                    <br>
-                                </ul>
-                            </nav>
+<body>
+    <header class="header">
+        <div class="site-title">Leader</div>
+    </header>
+    <main class="container">
+        <div class="profile fade-up-item">
+            <img src="assets/gr.jpg" alt="Leader" class="avatar" onerror="this.src='https://placehold.co/100x100/eee/555?text=L'">
+            <h1 class="name">Leader</h1>
+            <div class="sub">全栈开发者 · 大学生一枚</div>
+            <div class="quote">
+                “尽吾志也而不能至者，可以无悔矣，其孰能讥之乎？”
+            </div>
+            <div class="domain-note">
+                <strong>Levaer</strong>域名的由来：是 <strong>Leader</strong> 与 <strong>Vanguard</strong> 两个单词抽取合并组成。<br>
+                <span style="font-size:12px; color:#5f6f86;">Leader + Vanguard → Levaer · 引领先锋之意</span>
+            </div>
+        </div>
+        <div class="section fade-up-item" data-delay="30">
+            <div class="section-title">我的技术栈</div>
+            <div class="card-grid">
+                <div class="card"><div class="card-title">Tiecode</div><div class="card-desc">移动端安卓开发工具，原生开发。</div></div>
+                <div class="card"><div class="card-title">HTML / CSS</div><div class="card-desc">前端</div></div>
+                <div class="card"><div class="card-title">C</div><div class="card-desc">算法基础</div></div>
+                <div class="card"><div class="card-title">Java</div><div class="card-desc">面向对象设计、后端开发与跨平台应用</div></div>
+                <div class="card"><div class="card-title">MySQL</div><div class="card-desc">关系型数据库设计、查询优化与数据管理</div></div>
+            </div>
+        </div>
+        <div class="section fade-up-item" data-delay="100">
+            <div class="section-title">项目</div>
+            <div class="card-grid" id="projectGrid"></div>
+        </div>
+        <div class="section fade-up-item" data-delay="300">
+            <div class="section-title">联系方式</div>
+            <div class="contact-grid">
+                <div class="contact-card" data-contact="github">
+                    <div class="contact-header">
+                        <div class="contact-header-left">
+                            <span class="contact-badge" style="background:#181717;">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                            </span>
+                            <span class="contact-title">GitHub</span>
                         </div>
-                        <div class="iUp" style="margin-bottom: 5%;">
-                            <nav class="cover-navigation navigation--social">
-                                <ul class="navigation">
-                                    <li class="navigation__item">
-                                        <a href="https://github.com/Leadercns" title="Github" target="_blank">
-                                            <i class="ri-github-line"></i>
-                                            <span class="label">Github</span>
-                                        </a>
-                                    </li>
-                                    <li class="navigation__item">
-                                        <a href="https://gitee.com/Leadercn" title="Gitee" target="_blank">
-                                            <i class="ri-gitlab-line"></i>
-                                            <span class="label">Gitee</span>
-                                        </a>
-                                    </li>
-                                    <li class="navigation__item">
-                                        <a href="mailto:Levaer@levaer.cn" title="Email">
-                                            <i class="ri-mail-send-line"></i>
-                                            <span class="label">Email</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                    </div>
+                </div>
+                <div class="contact-card" data-contact="gitee">
+                    <div class="contact-header">
+                        <div class="contact-header-left">
+                            <span class="contact-badge" style="background:#C71D23;">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.48 7.98l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-4.52 4.52l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-4.52 4.52l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-2.04-2.04l-1.48 1.48-2.04-2.04 1.48-1.48 2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04 2.04l1.48 1.48-2.04 2.04-1.48-1.48 2.04-2.04zm-2.04 2.04l1.48 1.48-2.04 2.04-1.48-1.48 2.04-2.04z"/></svg>
+                            </span>
+                            <span class="contact-title">Gitee</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-card" data-contact="email">
+                    <div class="contact-header">
+                        <div class="contact-header-left">
+                            <span class="contact-badge" style="background:#1A73E8;">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+                            </span>
+                            <span class="contact-title">Email</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="remark iUp">
-            <div class="power">
-                <span class="power-line">Copyright &copy; Leader 2025 - 2027</span>
-                <span class="power-line">
-                    <a target="_blank" href="https://beian.miit.gov.cn/">渝ICP备2026009571号</a>
-                </span>
-                <span class="power-line ga-badge">
-                    <img src="assets/ga.png" alt="公安备案" class="ga-icon">
-                    <a target="_blank" href="https://beian.mps.gov.cn/">渝公网安备50023102500793号</a>
-                </span>
-                <span class="power-line">
-                    <span class="ip-box" id="ipDisplay">获取IP中...</span>
-                </span>
-                <span class="power-line esa-provider">阿里云提供云服务</span>
+    </main>
+    <footer class="footer">
+        <div class="copyright">Copyright © Leader 2025 - 2026</div>
+        <div class="icp">
+            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">渝ICP备2026009571号</a>
+        </div>
+        <div class="police-record">
+            <a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank" rel="noopener noreferrer">
+                <img src="https://levaer.cn/assets/ga.png" alt="公安备案图标" onerror="this.style.display='none'">
+                <span>渝公网安备50023102500793号</span>
+            </a>
+        </div>
+        <div class="ip-box" id="ipDisplay">获取IP中...</div>
+        <div class="esa-provider">阿里云提供云服务</div>
+        <div class="footer-thanks-row">
+            <span class="special-thanks-trigger" id="thanksTrigger">特别感谢</span>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <span class="contact-badge" id="modalBadge" style="background:#181717;">
+                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" id="modalIcon"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    </span>
+                    <span class="modal-header-title" id="modalTitle">GitHub</span>
+                </div>
+                <button class="modal-close" id="modalCloseBtn">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="row"><span class="label">用户：</span><span class="value"><strong>Leadercns</strong></span></div>
+                <div class="row"><span class="label">链接：</span><a href="https://github.com/Leadercns" target="_blank" rel="noopener noreferrer">https://github.com/Leadercns</a></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn-close" id="modalCloseBtn2">关闭</button>
             </div>
         </div>
-    </header>
+    </div>
+
+    <div class="modal-overlay" id="thanksModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-header-left">
+                    <span class="contact-badge" style="background:#2c7da0;">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill:#fff; width:20px; height:20px;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </span>
+                    <span class="modal-header-title">特别感谢</span>
+                </div>
+                <button class="modal-close" id="thanksModalCloseBtn">✕</button>
+            </div>
+            <div class="modal-body" id="thanksModalBody">
+                <div class="thanks-item">
+                    <div class="thanks-name">结绳 <span class="thanks-arrow">→</span></div>
+                    <div class="thanks-desc">感谢提供安卓开发</div>
+                    <div class="thanks-link"><a href="http://tiecode.cn/" target="_blank" rel="noopener noreferrer">http://tiecode.cn/</a></div>
+                </div>
+                <div class="thanks-item">
+                    <div class="thanks-name">小暴技术团队 <span class="thanks-arrow">→</span></div>
+                    <div class="thanks-desc">感谢提供云服务与技术指导</div>
+                    <div class="thanks-link"><a href="http://xbjstd.cn/" target="_blank" rel="noopener noreferrer">http://xbjstd.cn/</a></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn-close" id="thanksModalCloseBtn2">关闭</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        (function() {
-            "use strict";
+        var contactData = {
+            github: {
+                title: 'GitHub',
+                badgeColor: '#181717',
+                icon: '<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>',
+                fields: [
+                    { label: '用户：', value: 'Leadercns', strong: true },
+                    { label: '链接：', value: 'https://github.com/Leadercns', link: true }
+                ]
+            },
+            gitee: {
+                title: 'Gitee',
+                badgeColor: '#C71D23',
+                icon: '<path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.48 7.98l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-4.52 4.52l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-4.52 4.52l-2.04 2.04-1.48-1.48 2.04-2.04 1.48 1.48zm-2.04-2.04l-1.48 1.48-2.04-2.04 1.48-1.48 2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04-2.04l-1.48-1.48 2.04-2.04 1.48 1.48-2.04 2.04zm2.04 2.04l1.48 1.48-2.04 2.04-1.48-1.48 2.04-2.04zm-2.04 2.04l1.48 1.48-2.04 2.04-1.48-1.48 2.04-2.04z"/>',
+                fields: [
+                    { label: '用户：', value: 'Leadercn', strong: true },
+                    { label: '链接：', value: 'https://gitee.com/Leadercn', link: true }
+                ]
+            },
+            email: {
+                title: 'Email',
+                badgeColor: '#1A73E8',
+                icon: '<path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>',
+                fields: [
+                    { label: '邮箱：', value: 'Levaer@Levaer.cn', mailto: true }
+                ]
+            }
+        };
 
-            function loadProjects() {
-                var gridContainer = document.getElementById('projectGrid');
-                if (!gridContainer) return;
-                gridContainer.innerHTML = '';
-                var loadingEl = document.createElement('div');
-                loadingEl.className = 'loading-placeholder';
-                loadingEl.textContent = '加载项目中...';
-                loadingEl.id = 'projectLoadingPlaceholder';
-                gridContainer.appendChild(loadingEl);
+        var modalOverlay = document.getElementById('contactModal');
+        var modalBadge = document.getElementById('modalBadge');
+        var modalIcon = document.getElementById('modalIcon');
+        var modalTitle = document.getElementById('modalTitle');
+        var modalBody = document.getElementById('modalBody');
+        var modalCloseBtn = document.getElementById('modalCloseBtn');
+        var modalCloseBtn2 = document.getElementById('modalCloseBtn2');
 
-                fetch('/project_list.json', { cache: 'no-cache', headers: { 'Accept': 'application/json' } })
-                    .then(function(response) {
-                        if (!response.ok) return null;
-                        return response.json();
-                    })
-                    .then(function(data) {
-                        var placeholder = document.getElementById('projectLoadingPlaceholder');
-                        if (placeholder) placeholder.remove();
+        function openContactModal(type) {
+            var data = contactData[type];
+            if (!data) return;
+            modalBadge.style.background = data.badgeColor;
+            modalIcon.innerHTML = data.icon;
+            modalTitle.textContent = data.title;
+            var html = '';
+            for (var i = 0; i < data.fields.length; i++) {
+                var field = data.fields[i];
+                html += '<div class="row">';
+                html += '<span class="label">' + field.label + '</span>';
+                if (field.link) {
+                    html += '<a href="' + field.value + '" target="_blank" rel="noopener noreferrer">' + field.value + '</a>';
+                } else if (field.mailto) {
+                    html += '<a href="mailto:' + field.value + '">' + field.value + '</a>';
+                } else if (field.strong) {
+                    html += '<span class="value"><strong>' + field.value + '</strong></span>';
+                } else {
+                    html += '<span class="value">' + field.value + '</span>';
+                }
+                html += '</div>';
+            }
+            modalBody.innerHTML = html;
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
 
-                        function hasValidProjects(projects) {
-                            if (!Array.isArray(projects) || projects.length === 0) return false;
-                            for (var i = 0; i < projects.length; i++) {
-                                var p = projects[i];
-                                if (p && (p.name || p.title)) return true;
-                            }
-                            return false;
+        function closeContactModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.contact-card').forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                var type = this.getAttribute('data-contact');
+                if (type) openContactModal(type);
+            });
+        });
+
+        modalCloseBtn.addEventListener('click', closeContactModal);
+        modalCloseBtn2.addEventListener('click', closeContactModal);
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === this) closeContactModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeContactModal();
+        });
+
+        var thanksModal = document.getElementById('thanksModal');
+        var thanksTrigger = document.getElementById('thanksTrigger');
+        var thanksModalCloseBtn = document.getElementById('thanksModalCloseBtn');
+        var thanksModalCloseBtn2 = document.getElementById('thanksModalCloseBtn2');
+
+        function openThanksModal() {
+            thanksModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeThanksModal() {
+            thanksModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        thanksTrigger.addEventListener('click', openThanksModal);
+        thanksModalCloseBtn.addEventListener('click', closeThanksModal);
+        thanksModalCloseBtn2.addEventListener('click', closeThanksModal);
+        thanksModal.addEventListener('click', function(e) {
+            if (e.target === this) closeThanksModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeThanksModal();
+        });
+
+        function getUserIP() {
+            var ipEl = document.getElementById('ipDisplay');
+            if (!ipEl) return;
+            var url = 'https://api64.ipify.org?format=json';
+            var controller = new AbortController();
+            var timeoutId = setTimeout(function() { controller.abort(); }, 4000);
+            fetch(url, { signal: controller.signal })
+                .then(function(res) {
+                    clearTimeout(timeoutId);
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    return res.json();
+                })
+                .then(function(data) {
+                    var ip = data.ip || data.address || data.origin;
+                    if (!ip) throw new Error('未获取到IP');
+                    ipEl.textContent = 'IP: ' + ip;
+                    ipEl.className = 'ip-box';
+                })
+                .catch(function(err) {
+                    console.warn('IP获取失败:', err);
+                    ipEl.textContent = 'IP: 获取失败';
+                    ipEl.className = 'ip-box error';
+                });
+        }
+
+        var glitchTriggered = false;
+        function triggerGentleGlitchOnce() {
+            if (glitchTriggered) return;
+            glitchTriggered = true;
+            document.body.classList.add('glitch-effect');
+            setTimeout(function() {
+                document.body.classList.remove('glitch-effect');
+            }, 200);
+        }
+        window.addEventListener('scroll', function onFirstScroll() {
+            triggerGentleGlitchOnce();
+        }, { once: true });
+
+        function loadProjects() {
+            var gridContainer = document.getElementById('projectGrid');
+            if (!gridContainer) return;
+            gridContainer.innerHTML = '';
+            var loadingEl = document.createElement('div');
+            loadingEl.className = 'loading-placeholder';
+            loadingEl.textContent = '加载项目中...';
+            loadingEl.id = 'projectLoadingPlaceholder';
+            gridContainer.appendChild(loadingEl);
+
+            fetch('/project_list.json', { cache: 'no-cache', headers: { 'Accept': 'application/json' } })
+                .then(function(response) {
+                    if (!response.ok) return null;
+                    return response.json();
+                })
+                .then(function(data) {
+                    var placeholder = document.getElementById('projectLoadingPlaceholder');
+                    if (placeholder) placeholder.remove();
+                    function hasValidProjects(projects) {
+                        if (!Array.isArray(projects) || projects.length === 0) return false;
+                        for (var i = 0; i < projects.length; i++) {
+                            var p = projects[i];
+                            if (p && (p.name || p.title)) return true;
                         }
-
-                        if (data === null) {
-                            var errorEl = document.createElement('div');
-                            errorEl.className = 'error-placeholder';
-                            errorEl.textContent = '项目列表不存在';
-                            gridContainer.appendChild(errorEl);
-                            return;
-                        }
-                        if (!hasValidProjects(data)) {
-                            var emptyEl = document.createElement('div');
-                            emptyEl.className = 'empty-placeholder';
-                            emptyEl.textContent = '暂无项目';
-                            gridContainer.appendChild(emptyEl);
-                            return;
-                        }
-
-                        gridContainer.innerHTML = '';
-                        for (var idx = 0; idx < data.length; idx++) {
-                            var project = data[idx];
-                            if (!project.name && !project.title) continue;
-                            var projectName = project.name || project.title || '未命名项目';
-                            var projectLink = project.link || project.url || '#';
-                            var projectDesc = project.description || project.intro || '暂无简介';
-                            var imageUrl = null;
-                            if (project.hasOwnProperty('image') && typeof project.image === 'string' && project.image.trim()) {
-                                imageUrl = project.image.trim();
-                            }
-
-                            var cardElement;
-                            if (projectLink && projectLink !== '#') {
-                                cardElement = document.createElement('a');
-                                cardElement.href = projectLink;
-                                cardElement.target = '_blank';
-                                cardElement.rel = 'noopener noreferrer';
-                            } else {
-                                cardElement = document.createElement('div');
-                                cardElement.style.cursor = 'default';
-                            }
-                            cardElement.className = 'card';
-
-                            if (imageUrl) {
-                                var img = document.createElement('img');
-                                img.src = imageUrl;
-                                img.alt = projectName;
-                                img.className = 'project-img';
-                                img.onerror = function() { this.style.display = 'none'; };
-                                cardElement.appendChild(img);
-                            }
-
-                            var titleDiv = document.createElement('div');
-                            titleDiv.className = 'card-title';
-                            var nameSpan = document.createElement('span');
-                            nameSpan.textContent = projectName;
-                            var arrowSpan = document.createElement('span');
-                            arrowSpan.className = 'card-arrow';
-                            arrowSpan.textContent = '→';
-                            titleDiv.appendChild(nameSpan);
-                            titleDiv.appendChild(arrowSpan);
-
-                            var descDiv = document.createElement('div');
-                            descDiv.className = 'card-desc';
-                            descDiv.textContent = projectDesc;
-
-                            cardElement.appendChild(titleDiv);
-                            cardElement.appendChild(descDiv);
-                            gridContainer.appendChild(cardElement);
-                        }
-                    })
-                    .catch(function(error) {
-                        var placeholder = document.getElementById('projectLoadingPlaceholder');
-                        if (placeholder) placeholder.remove();
+                        return false;
+                    }
+                    if (data === null) {
                         var errorEl = document.createElement('div');
                         errorEl.className = 'error-placeholder';
                         errorEl.textContent = '项目列表不存在';
                         gridContainer.appendChild(errorEl);
-                        console.warn('项目列表加载失败:', error);
-                    });
-            }
-
-            function getUserIP() {
-                var ipEl = document.getElementById('ipDisplay');
-                if (!ipEl) return;
-                var url = 'https://api64.ipify.org?format=json';
-                var controller = new AbortController();
-                var timeoutId = setTimeout(function() { controller.abort(); }, 4000);
-                fetch(url, { signal: controller.signal })
-                    .then(function(res) {
-                        clearTimeout(timeoutId);
-                        if (!res.ok) throw new Error('HTTP ' + res.status);
-                        return res.json();
-                    })
-                    .then(function(data) {
-                        var ip = data.ip || data.address || data.origin;
-                        if (!ip) throw new Error('未获取到IP');
-                        ipEl.textContent = 'IP: ' + ip;
-                        ipEl.className = 'ip-box';
-                    })
-                    .catch(function(err) {
-                        console.warn('IP获取失败:', err);
-                        ipEl.textContent = 'IP: 获取失败';
-                        ipEl.className = 'ip-box error';
-                    });
-            }
-
-            function animateIup() {
-                document.querySelectorAll('.iUp').forEach(function(el) {
-                    el.classList.add('up');
+                        return;
+                    }
+                    if (!hasValidProjects(data)) {
+                        var emptyEl = document.createElement('div');
+                        emptyEl.className = 'empty-placeholder';
+                        emptyEl.textContent = '暂无项目';
+                        gridContainer.appendChild(emptyEl);
+                        return;
+                    }
+                    gridContainer.innerHTML = '';
+                    for (var idx = 0; idx < data.length; idx++) {
+                        var project = data[idx];
+                        if (!project.name && !project.title) continue;
+                        var projectName = project.name || project.title || '未命名项目';
+                        var projectLink = project.link || project.url || '#';
+                        var projectDesc = project.description || project.intro || '暂无简介';
+                        var imageUrl = null;
+                        if (project.hasOwnProperty('image') && typeof project.image === 'string' && project.image.trim()) {
+                            imageUrl = project.image.trim();
+                        }
+                        var cardElement;
+                        if (projectLink && projectLink !== '#') {
+                            cardElement = document.createElement('a');
+                            cardElement.href = projectLink;
+                            cardElement.target = '_blank';
+                            cardElement.rel = 'noopener noreferrer';
+                        } else {
+                            cardElement = document.createElement('div');
+                            cardElement.style.cursor = 'default';
+                        }
+                        cardElement.className = 'card';
+                        if (imageUrl) {
+                            var img = document.createElement('img');
+                            img.src = imageUrl;
+                            img.alt = projectName;
+                            img.className = 'project-img';
+                            img.onerror = function() { this.style.display = 'none'; };
+                            cardElement.appendChild(img);
+                        }
+                        var titleDiv = document.createElement('div');
+                        titleDiv.className = 'card-title';
+                        var nameSpan = document.createElement('span');
+                        nameSpan.textContent = projectName;
+                        var arrowSpan = document.createElement('span');
+                        arrowSpan.className = 'card-arrow';
+                        arrowSpan.textContent = '→';
+                        titleDiv.appendChild(nameSpan);
+                        titleDiv.appendChild(arrowSpan);
+                        var descDiv = document.createElement('div');
+                        descDiv.className = 'card-desc';
+                        descDiv.textContent = projectDesc;
+                        cardElement.appendChild(titleDiv);
+                        cardElement.appendChild(descDiv);
+                        gridContainer.appendChild(cardElement);
+                    }
+                })
+                .catch(function(error) {
+                    var placeholder = document.getElementById('projectLoadingPlaceholder');
+                    if (placeholder) placeholder.remove();
+                    var errorEl = document.createElement('div');
+                    errorEl.className = 'error-placeholder';
+                    errorEl.textContent = '项目列表不存在';
+                    gridContainer.appendChild(errorEl);
+                    console.warn('项目列表加载失败:', error);
                 });
-            }
+        }
 
-            var shakeEl = document.querySelector('.panel-cover__subtitle .shake');
-            if (shakeEl) {
-                function triggerShake() {
-                    shakeEl.classList.remove('shake');
-                    void shakeEl.offsetWidth;
-                    shakeEl.classList.add('shake');
+        function initScrollAnimation() {
+            var items = document.querySelectorAll('.fade-up-item');
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var delay = entry.target.getAttribute('data-delay') || 0;
+                        setTimeout(function() {
+                            entry.target.classList.add('revealed');
+                        }, parseInt(delay));
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+            items.forEach(function(el) {
+                observer.observe(el);
+            });
+        }
+
+        function disableAllZooming() {
+            document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
+            document.addEventListener('touchmove', function(e) {
+                if (e.touches.length >= 2) {
+                    e.preventDefault();
                 }
-                triggerShake();
-                shakeEl.addEventListener('animationend', function() {
-                    setTimeout(triggerShake, 2200);
-                });
-            }
+            }, { passive: false });
+            var lastTouchEnd = 0;
+            document.addEventListener('touchend', function(e) {
+                var now = Date.now();
+                if (now - lastTouchEnd <= 300) {
+                    e.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+            window.addEventListener('wheel', function(e) {
+                if (e.ctrlKey || e.metaKey) {
+                    e.preventDefault();
+                    return false;
+                }
+            }, { passive: false });
+            window.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '0' || e.key === '=')) {
+                    e.preventDefault();
+                }
+            });
+        }
 
-            function disableAllZooming() {
-                document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
-                document.addEventListener('touchmove', function(e) {
-                    if (e.touches.length >= 2) {
-                        e.preventDefault();
-                    }
-                }, { passive: false });
-                var lastTouchEnd = 0;
-                document.addEventListener('touchend', function(e) {
-                    var now = Date.now();
-                    if (now - lastTouchEnd <= 300) {
-                        e.preventDefault();
-                    }
-                    lastTouchEnd = now;
-                }, false);
-                window.addEventListener('wheel', function(e) {
-                    if (e.ctrlKey || e.metaKey) {
-                        e.preventDefault();
-                        return false;
-                    }
-                }, { passive: false });
-                window.addEventListener('keydown', function(e) {
-                    if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '0' || e.key === '=')) {
-                        e.preventDefault();
-                    }
-                });
-            }
+        function init() {
+            getUserIP();
+            loadProjects();
+            initScrollAnimation();
+            disableAllZooming();
+        }
 
-            function init() {
-                loadProjects();
-                getUserIP();
-                setTimeout(animateIup, 150);
-                disableAllZooming();
-            }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
 
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', init);
-            } else {
-                init();
-            }
-        })();
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
     </script>
 </body>
 </html>
