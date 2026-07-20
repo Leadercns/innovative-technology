@@ -20,7 +20,6 @@
     <link rel="icon" href="assets/gr.jpg" />
 
     <style>
-        /* ===== 原有 index.html 样式（保留） ===== */
         * {
             margin: 0;
             padding: 0;
@@ -107,7 +106,6 @@
             background: #fafafa;
         }
 
-        /* 头像翻转 */
         .ih-item.circle {
             position: relative;
             width: 120px;
@@ -215,7 +213,6 @@
             transform: translate3d(0, 0, 0);
         }
 
-        /* ===== 项目卡片（来自 ck.html 风格） ===== */
         .navigation {
             display: block;
             width: 100%;
@@ -291,7 +288,6 @@
             background: #fafbfc;
         }
 
-        /* ===== 社交图标（与 index.html 风格一致） ===== */
         .navigation--social {
             margin-top: 28px;
         }
@@ -314,7 +310,6 @@
             display: none;
         }
 
-        /* ===== 底部（竖向排列，大字体） ===== */
         .remark {
             position: relative;
             text-align: center;
@@ -351,8 +346,27 @@
             width: auto;
             vertical-align: middle;
         }
+        .ip-box {
+            font-family: monospace;
+            font-size: 13px;
+            background: #f5f7fa;
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 3px;
+            border: 1px solid #e2e8f0;
+            color: #2c5a74;
+        }
+        .ip-box.error {
+            color: #999;
+            background: #f5f5f5;
+        }
+        .esa-provider {
+            font-family: monospace;
+            font-size: 13px;
+            color: #6f7d95;
+            letter-spacing: 0.3px;
+        }
 
-        /* ===== 抖动动画 ===== */
         @keyframes shake {
             0% { transform: rotate(0deg) scale(1) translateX(0); }
             25% { transform: rotate(-6deg) scale(1.04) translateX(-2px); }
@@ -378,6 +392,8 @@
             .card-grid { grid-template-columns: 1fr; }
             .power { font-size: 12px; }
             .ga-icon { height: 16px; }
+            .ip-box { font-size: 11px; padding: 1px 8px; }
+            .esa-provider { font-size: 11px; }
         }
     </style>
 </head>
@@ -387,7 +403,6 @@
         <div class="panel-main panel">
             <div class="panel-main__inner panel-inverted">
                 <div class="panel-main__content">
-                    <!-- 头像 -->
                     <div class="ih-item circle effect right_to_left" style="margin-top: 5%;">
                         <a class="blog-button">
                             <div class="img">
@@ -396,18 +411,18 @@
                             <div class="info iUp">
                                 <div class="info-back">
                                     <h2>Hello</h2>
-                                    <p>2025 · 福</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <h1 class="thankyou">Leader</h1>
                     <p class="panel-cover__subtitle panel-subtitle iUp">
-                        <span class="shake"></span><br> 尽吾志也而不能至者，可以无悔矣，其孰能讥之乎？<br>Leader
+                        <span class="shake"></span><br> 尽吾志也而不能至者，可以无悔矣，其孰能讥之乎？
+                        <br>全栈开发者
                     </p>
                     <hr class="panel-cover__divider iUp" />
 
-                    <p class="panel-cover__description iUp">💌</p>
+                    <p class="panel-cover__description iUp">语录</p>
                     <p id="description" class="panel-cover__description iUp">
                         世人千万，再难遇我。
                         <strong>-「Leader」</strong>
@@ -418,13 +433,11 @@
                             <nav class="cover-navigation cover-navigation--primary">
                                 <ul class="navigation">
                                     <p class="panel-cover__description iUp" style="font-weight:600; font-size:1.1em;">个人项目</p>
-                                    <!-- 项目网格容器 -->
                                     <div class="card-grid" id="projectGrid"></div>
                                     <br>
                                 </ul>
                             </nav>
                         </div>
-                        <!-- 社交图标 -->
                         <div class="iUp" style="margin-bottom: 5%;">
                             <nav class="cover-navigation navigation--social">
                                 <ul class="navigation">
@@ -453,7 +466,6 @@
                 </div>
             </div>
         </div>
-        <!-- 底部（竖向排列） -->
         <div class="remark iUp">
             <div class="power">
                 <span class="power-line">Copyright &copy; Leader 2025 - 2026 All rights reserved.</span>
@@ -462,8 +474,12 @@
                 </span>
                 <span class="power-line ga-badge">
                     <img src="assets/ga.png" alt="公安备案" class="ga-icon">
-                    <a target="_blank" href="https://beian.mps.gov.cn/">渝公网安备 500000000000000号</a>
+                    <a target="_blank" href="https://beian.mps.gov.cn/">渝公网安备50023102500793号</a>
                 </span>
+                <span class="power-line">
+                    <span class="ip-box" id="ipDisplay">获取IP中...</span>
+                </span>
+                <span class="power-line esa-provider">阿里云提供云服务</span>
             </div>
         </div>
     </header>
@@ -472,7 +488,6 @@
         (function() {
             "use strict";
 
-            // ===== 项目加载（完全来自 ck.html 的 loadProjects） =====
             function loadProjects() {
                 var gridContainer = document.getElementById('projectGrid');
                 if (!gridContainer) return;
@@ -579,14 +594,37 @@
                     });
             }
 
-            // ===== 入场动画 =====
+            function getUserIP() {
+                var ipEl = document.getElementById('ipDisplay');
+                if (!ipEl) return;
+                var url = 'https://api64.ipify.org?format=json';
+                var controller = new AbortController();
+                var timeoutId = setTimeout(function() { controller.abort(); }, 4000);
+                fetch(url, { signal: controller.signal })
+                    .then(function(res) {
+                        clearTimeout(timeoutId);
+                        if (!res.ok) throw new Error('HTTP ' + res.status);
+                        return res.json();
+                    })
+                    .then(function(data) {
+                        var ip = data.ip || data.address || data.origin;
+                        if (!ip) throw new Error('未获取到IP');
+                        ipEl.textContent = 'IP: ' + ip;
+                        ipEl.className = 'ip-box';
+                    })
+                    .catch(function(err) {
+                        console.warn('IP获取失败:', err);
+                        ipEl.textContent = 'IP: 获取失败';
+                        ipEl.className = 'ip-box error';
+                    });
+            }
+
             function animateIup() {
                 document.querySelectorAll('.iUp').forEach(function(el) {
                     el.classList.add('up');
                 });
             }
 
-            // ===== 抖动循环 =====
             var shakeEl = document.querySelector('.panel-cover__subtitle .shake');
             if (shakeEl) {
                 function triggerShake() {
@@ -600,7 +638,6 @@
                 });
             }
 
-            // ===== 禁止缩放（双指、Ctrl+滚轮） =====
             function disableAllZooming() {
                 document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
                 document.addEventListener('touchmove', function(e) {
@@ -629,9 +666,9 @@
                 });
             }
 
-            // ===== 初始化 =====
             function init() {
                 loadProjects();
+                getUserIP();
                 setTimeout(animateIup, 150);
                 disableAllZooming();
             }
