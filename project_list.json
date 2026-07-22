@@ -2,7 +2,7 @@
   {
     "name": "LeadCore",
     "link": "https://leadcore-web.levaer.cn/",
-    "description": "基于Spring boot写的多租户API云后台。",
+    "description": "基于Spring boot写的多租户BaaS云平台",
     "image": "assets/li3.png"
   }
 ]
