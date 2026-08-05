@@ -123,7 +123,7 @@ function getUserIP() {
         .then(function(data) {
             var ip = data.ip || data.address || data.origin;
             if (!ip) throw new Error('未获取到IP');
-            ipEl.textContent = 'IP: ' + ip;
+            ipEl.textContent = '你的IP: ' + ip;
             ipEl.className = 'ip-box';
         })
         .catch(function(err) {
