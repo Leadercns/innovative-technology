@@ -67,7 +67,6 @@ function closeContactModal() {
     document.body.style.overflow = '';
 }
 
-// 联系方式卡片点击：github/gitee 直接跳转，email 弹窗
 document.querySelectorAll('.contact-card').forEach(function(card) {
     card.addEventListener('click', function(e) {
         var type = this.getAttribute('data-contact');
