@@ -67,10 +67,17 @@ function closeContactModal() {
     document.body.style.overflow = '';
 }
 
+// 联系方式卡片点击：github/gitee 直接跳转，email 弹窗
 document.querySelectorAll('.contact-card').forEach(function(card) {
     card.addEventListener('click', function(e) {
         var type = this.getAttribute('data-contact');
-        if (type) openContactModal(type);
+        if (type === 'github') {
+            window.open('https://github.com/Leadercns', '_blank');
+        } else if (type === 'gitee') {
+            window.open('https://gitee.com/Leadercn', '_blank');
+        } else if (type === 'email') {
+            openContactModal('email');
+        }
     });
 });
 
@@ -84,7 +91,8 @@ document.addEventListener('keydown', function(e) {
 });
 
 var thanksModal = document.getElementById('thanksModal');
-var thanksDrawer = document.getElementById('thanksDrawer');
+var thanksNav = document.getElementById('thanksNav');
+var thanksPanel = document.getElementById('thanksPanel');
 var thanksModalCloseBtn = document.getElementById('thanksModalCloseBtn');
 var thanksModalCloseBtn2 = document.getElementById('thanksModalCloseBtn2');
 
@@ -98,7 +106,8 @@ function closeThanksModal() {
     document.body.style.overflow = '';
 }
 
-if (thanksDrawer) thanksDrawer.addEventListener('click', openThanksModal);
+if (thanksNav) thanksNav.addEventListener('click', openThanksModal);
+if (thanksPanel) thanksPanel.addEventListener('click', openThanksModal);
 thanksModalCloseBtn.addEventListener('click', closeThanksModal);
 thanksModalCloseBtn2.addEventListener('click', closeThanksModal);
 thanksModal.addEventListener('click', function(e) {
@@ -132,19 +141,6 @@ function getUserIP() {
             ipEl.className = 'ip-box error';
         });
 }
-
-var glitchTriggered = false;
-function triggerGentleGlitchOnce() {
-    if (glitchTriggered) return;
-    glitchTriggered = true;
-    document.body.classList.add('glitch-effect');
-    setTimeout(function() {
-        document.body.classList.remove('glitch-effect');
-    }, 200);
-}
-window.addEventListener('scroll', function onFirstScroll() {
-    triggerGentleGlitchOnce();
-}, { once: true });
 
 function loadProjects() {
     var gridContainer = document.getElementById('projectGrid');
@@ -266,48 +262,89 @@ function switchPage(targetId) {
             el.style.display = 'none';
         });
     }
+    document.querySelectorAll('.nav-link, .panel-btn').forEach(function(link) {
+        link.classList.remove('active');
+        if (link.getAttribute('data-target') === targetId) {
+            link.classList.add('active');
+        }
+    });
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function initPanel() {
+    var hamburger = document.getElementById('hamburger');
+    var panel = document.getElementById('topPanel');
+    var overlay = document.getElementById('menuOverlay');
+    var panelBtns = panel.querySelectorAll('.panel-btn');
+
+    function openPanel() {
+        panel.classList.add('open');
+        overlay.classList.add('active');
+        hamburger.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePanel() {
+        panel.classList.remove('open');
+        overlay.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (panel.classList.contains('open')) {
+            closePanel();
+        } else {
+            openPanel();
+        }
+    });
+
+    overlay.addEventListener('click', closePanel);
+
+    panelBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var target = this.getAttribute('data-target');
+            if (target === 'thanks') {
+                openThanksModal();
+                closePanel();
+                return;
+            }
+            if (target) {
+                switchPage(target);
+            }
+            closePanel();
+        });
+    });
 }
 
 function init() {
     getUserIP();
     switchPage('about');
+    initPanel();
 
-    var hamburger = document.getElementById('hamburger');
-    var drawerMenu = document.getElementById('drawerMenu');
-    var drawerItems = drawerMenu.querySelectorAll('.drawer-item:not(.thanks-drawer)');
-    function toggleDrawer() {
-        hamburger.classList.toggle('active');
-        drawerMenu.classList.toggle('open');
-    }
-    hamburger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        toggleDrawer();
-    });
-    drawerItems.forEach(function(item) {
-        item.addEventListener('click', function(e) {
+    var desktopLinks = document.querySelectorAll('.nav-desktop-content .nav-link');
+    desktopLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
             var target = this.getAttribute('data-target');
+            if (target === 'thanks') {
+                openThanksModal();
+                return;
+            }
             if (target) {
                 switchPage(target);
             }
-            if (drawerMenu.classList.contains('open')) {
-                toggleDrawer();
-            }
         });
     });
-    document.addEventListener('click', function(e) {
-        var wrapper = document.querySelector('.hamburger-wrapper');
-        if (!wrapper.contains(e.target) && drawerMenu.classList.contains('open')) {
-            toggleDrawer();
-        }
+
+    document.querySelectorAll('.back-link').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            switchPage('about');
+        });
     });
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-} else {
-    init();
-}
-
+document.addEventListener('DOMContentLoaded', init);
 document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
