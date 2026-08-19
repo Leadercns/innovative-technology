@@ -8,40 +8,60 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="header">
-        <div class="site-title">Leader</div>
-    </header>
+
+    <div class="hamburger-wrapper">
+        <button class="hamburger" id="hamburger" aria-label="菜单">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <div class="drawer-menu" id="drawerMenu">
+            <a href="#" class="drawer-item" data-target="about">关于</a>
+            <a href="#" class="drawer-item" data-target="tech">技术栈</a>
+            <a href="#" class="drawer-item" data-target="projects">项目</a>
+            <a href="#" class="drawer-item" data-target="contact">联系方式</a>
+            <span class="drawer-item thanks-drawer" id="thanksDrawer">特别感谢</span>
+        </div>
+    </div>
+
     <main class="container">
-        <div class="profile fade-up-item">
-            <img src="assets/gr.jpg" alt="Leader" class="avatar" onerror="this.src='https://placehold.co/100x100/eee/555?text=L'">
-            <h1 class="name">Leader</h1>
-            <div class="sub">全栈开发者 · 大学生一枚</div>
-            <div class="quote">
-                “尽吾志也而不能至者，可以无悔矣，其孰能讥之乎？”
+        <!-- 关于 -->
+        <section class="page-section" id="page-about">
+            <div class="profile">
+                <img src="assets/gr.jpg" alt="Leader" class="avatar" onerror="this.src='https://placehold.co/100x100/eee/555?text=L'">
+                <h1 class="name">Leader</h1>
+                <div class="sub">全栈开发者 · 大学生一枚</div>
+                <div class="quote">
+                    “尽吾志也而不能至者，可以无悔矣，其孰能讥之乎？”
+                </div>
+                <div class="domain-note">
+                    <strong>Levaer</strong>域名的由来：是 <strong>Leader</strong> 与 <strong>Vanguard</strong> 两个单词抽取合并组成。<br>
+                    <span style="font-size:12px; color:#5f6f86;">Leader + Vanguard → Levaer · 引领先锋之意</span>
+                </div>
             </div>
-            <div class="domain-note">
-                <strong>Levaer</strong>域名的由来：是 <strong>Leader</strong> 与 <strong>Vanguard</strong> 两个单词抽取合并组成。<br>
-                <span style="font-size:12px; color:#5f6f86;">Leader + Vanguard → Levaer · 引领先锋之意</span>
-            </div>
-        </div>
-        <div class="section fade-up-item" data-delay="30">
+        </section>
+
+        <!-- 技术栈 -->
+        <section class="page-section" id="page-tech" style="display:none;">
             <div class="section-title">我的技术栈</div>
-            <div class="card-grid">
-                <div class="card"><div class="card-title">Tiecode</div><div class="card-desc">移动端安卓开发工具，原生开发。</div></div>
-                <div class="card"><div class="card-title">HTML / CSS</div><div class="card-desc">前端</div></div>
-                <div class="card"><div class="card-title">C</div><div class="card-desc">算法基础</div></div>
-                <div class="card"><div class="card-title">Java</div><div class="card-desc">面向对象设计、后端开发与跨平台应用</div></div>
-                <div class="card"><div class="card-title">MySQL</div><div class="card-desc">关系型数据库设计、查询优化与数据管理</div></div>
-
-<div class="card"><div class="card-title">Spring Boot</div><div class="card-desc">自动化配置与内嵌容器的企业级应用开发框架</div></div>
-
+            <div class="tech-tags">
+                <span class="tag">Tiecode</span>
+                <span class="tag">HTML / CSS</span>
+                <span class="tag">C</span>
+                <span class="tag">Java</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Spring Boot</span>
             </div>
-        </div>
-        <div class="section fade-up-item" data-delay="100">
+        </section>
+
+        <!-- 项目 -->
+        <section class="page-section" id="page-projects" style="display:none;">
             <div class="section-title">项目</div>
             <div class="card-grid" id="projectGrid"></div>
-        </div>
-        <div class="section fade-up-item" data-delay="300">
+        </section>
+
+        <!-- 联系方式 -->
+        <section class="page-section" id="page-contact" style="display:none;">
             <div class="section-title">联系方式</div>
             <div class="contact-grid">
                 <div class="contact-card" data-contact="github">
@@ -75,10 +95,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
+
     <footer class="footer">
-        <div class="copyright">Copyright © Leader 2025 - 2027</div>
+        <div class="copyright footer-extra">Copyright © Leader 2025 - 2027</div>
         <div class="icp">
             <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">渝ICP备2026009571号</a>
         </div>
@@ -88,11 +109,8 @@
                 <span>渝公网安备50023102500793号</span>
             </a>
         </div>
-        <div class="ip-box" id="ipDisplay">获取IP中...</div>
-        <div class="esa-provider">阿里云提供云服务</div>
-        <div class="footer-thanks-row">
-            <span class="special-thanks-trigger" id="thanksTrigger">特别感谢</span>
-        </div>
+        <div class="ip-box footer-extra" id="ipDisplay">获取IP中...</div>
+        <div class="esa-provider footer-extra">阿里云提供云服务</div>
     </footer>
 
     <div class="modal-overlay" id="contactModal">
@@ -128,7 +146,6 @@
                 <button class="modal-close" id="thanksModalCloseBtn">✕</button>
             </div>
             <div class="modal-body" id="thanksModalBody">
-                
                 <div class="thanks-item">
                     <div class="thanks-name">小暴技术团队 <span class="thanks-arrow">→</span></div>
                     <div class="thanks-desc">感谢提供云服务与技术指导</div>
