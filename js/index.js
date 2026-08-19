@@ -84,7 +84,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 var thanksModal = document.getElementById('thanksModal');
-var thanksTrigger = document.getElementById('thanksTrigger');
+var thanksDrawer = document.getElementById('thanksDrawer');
 var thanksModalCloseBtn = document.getElementById('thanksModalCloseBtn');
 var thanksModalCloseBtn2 = document.getElementById('thanksModalCloseBtn2');
 
@@ -98,7 +98,7 @@ function closeThanksModal() {
     document.body.style.overflow = '';
 }
 
-thanksTrigger.addEventListener('click', openThanksModal);
+if (thanksDrawer) thanksDrawer.addEventListener('click', openThanksModal);
 thanksModalCloseBtn.addEventListener('click', closeThanksModal);
 thanksModalCloseBtn2.addEventListener('click', closeThanksModal);
 thanksModal.addEventListener('click', function(e) {
@@ -244,57 +244,64 @@ function loadProjects() {
         });
 }
 
-function initScrollAnimation() {
-    var items = document.querySelectorAll('.fade-up-item');
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                var delay = entry.target.getAttribute('data-delay') || 0;
-                setTimeout(function() {
-                    entry.target.classList.add('revealed');
-                }, parseInt(delay));
-                observer.unobserve(entry.target);
-            }
+function switchPage(targetId) {
+    var sections = document.querySelectorAll('.page-section');
+    sections.forEach(function(section) {
+        section.style.display = 'none';
+    });
+    var target = document.getElementById('page-' + targetId);
+    if (target) {
+        target.style.display = 'block';
+        if (targetId === 'projects') {
+            loadProjects();
+        }
+    }
+    var footerExtra = document.querySelectorAll('.footer-extra');
+    if (targetId === 'about') {
+        footerExtra.forEach(function(el) {
+            el.style.display = '';
         });
-    }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
-    items.forEach(function(el) {
-        observer.observe(el);
-    });
-}
-
-function disableAllZooming() {
-    document.addEventListener('gesturestart', function(e) { e.preventDefault(); });
-    document.addEventListener('touchmove', function(e) {
-        if (e.touches.length >= 2) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-    var lastTouchEnd = 0;
-    document.addEventListener('touchend', function(e) {
-        var now = Date.now();
-        if (now - lastTouchEnd <= 300) {
-            e.preventDefault();
-        }
-        lastTouchEnd = now;
-    }, false);
-    window.addEventListener('wheel', function(e) {
-        if (e.ctrlKey || e.metaKey) {
-            e.preventDefault();
-            return false;
-        }
-    }, { passive: false });
-    window.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '0' || e.key === '=')) {
-            e.preventDefault();
-        }
-    });
+    } else {
+        footerExtra.forEach(function(el) {
+            el.style.display = 'none';
+        });
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function init() {
     getUserIP();
-    loadProjects();
-    initScrollAnimation();
-    disableAllZooming();
+    switchPage('about');
+
+    var hamburger = document.getElementById('hamburger');
+    var drawerMenu = document.getElementById('drawerMenu');
+    var drawerItems = drawerMenu.querySelectorAll('.drawer-item:not(.thanks-drawer)');
+    function toggleDrawer() {
+        hamburger.classList.toggle('active');
+        drawerMenu.classList.toggle('open');
+    }
+    hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleDrawer();
+    });
+    drawerItems.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = this.getAttribute('data-target');
+            if (target) {
+                switchPage(target);
+            }
+            if (drawerMenu.classList.contains('open')) {
+                toggleDrawer();
+            }
+        });
+    });
+    document.addEventListener('click', function(e) {
+        var wrapper = document.querySelector('.hamburger-wrapper');
+        if (!wrapper.contains(e.target) && drawerMenu.classList.contains('open')) {
+            toggleDrawer();
+        }
+    });
 }
 
 if (document.readyState === 'loading') {
