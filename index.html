@@ -8,74 +8,61 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <div class="hamburger-wrapper">
-        <button class="hamburger" id="hamburger" aria-label="菜单">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
-        <div class="drawer-menu" id="drawerMenu">
-            <a href="#" class="drawer-item" data-target="about">关于</a>
-            <a href="#" class="drawer-item" data-target="tech">技术栈</a>
-            <a href="#" class="drawer-item" data-target="projects">项目</a>
-            <a href="#" class="drawer-item" data-target="contact">联系方式</a>
-            <span class="drawer-item thanks-drawer" id="thanksDrawer">特别感谢</span>
+    <header class="header">
+        <div class="header-inner">
+            <button class="hamburger" id="hamburger" aria-label="菜单">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="top-panel" id="topPanel">
+        <div class="panel-body">
+            <button class="panel-btn" data-target="about">关于</button>
+            <button class="panel-btn" data-target="tech">技术栈</button>
+            <button class="panel-btn" data-target="projects">项目</button>
+            <button class="panel-btn" data-target="contact">联系方式</button>
+            <button class="panel-btn" data-target="thanks" id="thanksPanel">特别感谢</button>
         </div>
     </div>
-
     <main class="container">
         <section class="page-section" id="page-about">
             <div class="profile">
                 <img src="assets/gr.jpg" alt="Leader" class="avatar" onerror="this.src='https://placehold.co/100x100/eee/555?text=L'">
                 <h1 class="name">Leader</h1>
                 <div class="sub">全栈开发者 · 大学生一枚</div>
-                <div class="quote">
-                    “尽吾志也而不能至者，可以无悔矣，其孰能讥之乎？”
-                </div>
-                <div class="domain-note">
-                    <strong>Levaer</strong>域名的由来：是 <strong>Leader</strong> 与 <strong>Vanguard</strong> 两个单词抽取合并组成。<br>
-                    <span style="font-size:12px; color:#5f6f86;">Leader + Vanguard → Levaer · 引领先锋之意</span>
-                </div>
+                <div class="quote">“尽吾志也而不能至者，可以无悔矣，其孰能讥之乎？”</div>
+                <div class="domain-note"><strong>Levaer</strong>域名的由来：是 <strong>Leader</strong> 与 <strong>Vanguard</strong> 两个单词抽取合并组成。<br><span style="font-size:12px; color:#5f6f86;">Leader + Vanguard → Levaer · 引领先锋之意</span></div>
+                <nav class="nav-desktop-content">
+                    <a href="#" class="nav-link active" data-target="about">关于</a>
+                    <a href="#" class="nav-link" data-target="tech">技术栈</a>
+                    <a href="#" class="nav-link" data-target="projects">项目</a>
+                    <a href="#" class="nav-link" data-target="contact">联系方式</a>
+                    <span class="nav-link" data-target="thanks" id="thanksNav">特别感谢</span>
+                </nav>
             </div>
         </section>
-
         <section class="page-section" id="page-tech" style="display:none;">
-            <div class="section-title">我的技术栈</div>
+            <div class="back-home"><a href="#" class="back-link" data-target="about">← 返回首页</a></div>
+            <div class="section-title">技术栈</div>
             <ul class="tech-list">
-                <li>
-                    <div class="tech-name">Tiecode</div>
-                    <div class="tech-desc">移动端安卓开发工具，原生开发。</div>
-                </li>
-                <li>
-                    <div class="tech-name">HTML / CSS</div>
-                    <div class="tech-desc">前端</div>
-                </li>
-                <li>
-                    <div class="tech-name">C</div>
-                    <div class="tech-desc">算法基础</div>
-                </li>
-                <li>
-                    <div class="tech-name">Java</div>
-                    <div class="tech-desc">面向对象设计、后端开发与跨平台应用</div>
-                </li>
-                <li>
-                    <div class="tech-name">MySQL</div>
-                    <div class="tech-desc">关系型数据库设计、查询优化与数据管理</div>
-                </li>
-                <li>
-                    <div class="tech-name">Spring Boot</div>
-                    <div class="tech-desc">自动化配置与内嵌容器的企业级应用开发框架</div>
-                </li>
+                <li><div class="tech-name">Tiecode</div><div class="tech-desc">移动端安卓开发工具，原生开发。</div></li>
+                <li><div class="tech-name">HTML / CSS</div><div class="tech-desc">前端</div></li>
+                <li><div class="tech-name">C</div><div class="tech-desc">算法基础</div></li>
+                <li><div class="tech-name">Java</div><div class="tech-desc">面向对象设计、后端开发与跨平台应用</div></li>
+                <li><div class="tech-name">MySQL</div><div class="tech-desc">关系型数据库设计、查询优化与数据管理</div></li>
+                <li><div class="tech-name">Spring Boot</div><div class="tech-desc">自动化配置与内嵌容器的企业级应用开发框架</div></li>
             </ul>
         </section>
-
         <section class="page-section" id="page-projects" style="display:none;">
+            <div class="back-home"><a href="#" class="back-link" data-target="about">← 返回首页</a></div>
             <div class="section-title">项目</div>
             <div class="card-grid" id="projectGrid"></div>
         </section>
-
         <section class="page-section" id="page-contact" style="display:none;">
+            <div class="back-home"><a href="#" class="back-link" data-target="about">← 返回首页</a></div>
             <div class="section-title">联系方式</div>
             <div class="contact-grid">
                 <div class="contact-card" data-contact="github">
@@ -111,22 +98,13 @@
             </div>
         </section>
     </main>
-
     <footer class="footer">
         <div class="copyright footer-extra">Copyright © Leader 2025 - 2027</div>
-        <div class="icp">
-            <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">渝ICP备2026009571号</a>
-        </div>
-        <div class="police-record">
-            <a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank" rel="noopener noreferrer">
-                <img src="https://levaer.cn/assets/ga.png" alt="公安备案图标" onerror="this.style.display='none'">
-                <span>渝公网安备50023102500793号</span>
-            </a>
-        </div>
+        <div class="icp"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">渝ICP备2026009571号</a></div>
+        <div class="police-record"><a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank" rel="noopener noreferrer"><img src="https://levaer.cn/assets/ga.png" alt="公安备案图标" onerror="this.style.display='none'"><span>渝公网安备50023102500793号</span></a></div>
         <div class="ip-box footer-extra" id="ipDisplay">获取IP中...</div>
         <div class="esa-provider footer-extra">阿里云提供云服务</div>
     </footer>
-
     <div class="modal-overlay" id="contactModal">
         <div class="modal-box">
             <div class="modal-header">
@@ -142,12 +120,9 @@
                 <div class="row"><span class="label">用户：</span><span class="value"><strong>Leadercns</strong></span></div>
                 <div class="row"><span class="label">链接：</span><a href="https://github.com/Leadercns" target="_blank" rel="noopener noreferrer">https://github.com/Leadercns</a></div>
             </div>
-            <div class="modal-footer">
-                <button class="modal-btn-close" id="modalCloseBtn2">关闭</button>
-            </div>
+            <div class="modal-footer"><button class="modal-btn-close" id="modalCloseBtn2">关闭</button></div>
         </div>
     </div>
-
     <div class="modal-overlay" id="thanksModal">
         <div class="modal-box">
             <div class="modal-header">
@@ -166,12 +141,9 @@
                     <div class="thanks-link"><a href="http://xbjstd.cn/" target="_blank" rel="noopener noreferrer">http://xbjstd.cn/</a></div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="modal-btn-close" id="thanksModalCloseBtn2">关闭</button>
-            </div>
+            <div class="modal-footer"><button class="modal-btn-close" id="thanksModalCloseBtn2">关闭</button></div>
         </div>
     </div>
-
     <script src="js/index.js"></script>
 </body>
 </html>
