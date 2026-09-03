@@ -10,6 +10,6 @@
     "name": "YueX",
     "link": "https://yuex.levaer.cn:154",
     "description": "YueX 是一个基于 Spring Boot 4.1.1 + JDK 21 构建的轻量级多级权限 API 管理平台",
-    "image": ""
+    "image": "assets/Y.png"
   }
 ]
