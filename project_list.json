@@ -15,7 +15,7 @@
   {
     "name": "ShieldX",
     "link": "https://sx.levaer.cn:154",
-    "description": "YueX 是一个基于 Spring Boot 4.1.1 + JDK 21 构建的加密云盘，可供分享下载",
+    "description": "ShieldX 是一个基于 Spring Boot 4.1.1 + JDK 21 构建的加密云盘，可供分享下载",
     "image": "assets/sx.jpg"
   }
 ]
