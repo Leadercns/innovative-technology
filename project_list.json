@@ -1,7 +1,7 @@
 [
   {
     "name": "LeadCore",
-    "link": "https://leadcore-web.levaer.cn/",
+    "link": "https://leadcore.levaer.cn:154",
     "description": "基于Spring boot写的多租户BaaS云平台",
     "image": "assets/LeadCore1.jpg"
   },
